@@ -1,0 +1,15 @@
+
+> lab-y-ai@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.7:3000
+- Environments: .env.local
+✓ Ready in 1602ms
+
+○ Compiling /agents ...
+ GET /agents 200 in 4.5s (next.js: 2.1s, application-code: 2.4s)
+ GET /agents/voice-agent 200 in 6.4s (next.js: 3.9s, application-code: 2.5s)
+ GET /demos 200 in 1998ms (next.js: 956ms, application-code: 1043ms)
+[?25h
