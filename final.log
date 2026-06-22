@@ -615,3 +615,7 @@ Import trace:
 [browser] daily-js version 0.85.0 is nearing end of support. Please upgrade to a newer version. (file://http://localhost:3000/_next/static/chunks/node_modules_1v2l21d._.js:5971:21)
  GET /agents/voice-agent 200 in 566ms (next.js: 15ms, application-code: 551ms)
 [browser] daily-js version 0.85.0 is nearing end of support. Please upgrade to a newer version. (file://http://localhost:3000/_next/static/chunks/node_modules_1v2l21d._.js:5971:21)
+ GET / 200 in 169ms (next.js: 24ms, application-code: 145ms)
+✓ Compiled in 4.2s
+✓ Compiled in 588ms
+✓ Compiled in 426ms

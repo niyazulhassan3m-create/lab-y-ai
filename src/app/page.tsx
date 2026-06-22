@@ -16,6 +16,11 @@ export default function Home() {
       <section className="relative pt-36 pb-20 px-4 overflow-hidden min-h-[90vh] flex items-center">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-600/15 via-transparent to-transparent" />
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -right-40 top-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.06]">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&auto=format&fit=crop" alt="" className="w-full h-full object-cover" />
+          </div>
+        </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 mb-4">All-in-One AI Platform</p>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight">
@@ -53,6 +58,22 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Technology Section */}
+      <section className="relative py-24 px-4 overflow-hidden border-t border-white/5">
+        <div className="absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1400&q=80&auto=format&fit=crop" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-black/80" />
+        </div>
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 mb-3">Our AI Technology</p>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Built on Advanced AI</h2>
+          <p className="text-grey-300 text-lg max-w-2xl mx-auto">
+            Powered by Google Gemini, Web Speech API, and Vapi telephony — our agents
+            understand Tanglish, respond naturally, and automate your business 24/7.
+          </p>
         </div>
       </section>
 
