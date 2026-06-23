@@ -3,11 +3,28 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
+function fallbackReply(msg: string): string {
+  const q = msg.toLowerCase();
+  if (q.includes("hi") || q.includes("vanakkam") || q.includes("hello") || q.includes("hey")) return "Vanakkam! Naan Yara, Lab Y AI Solutions la AI agent. Ungaluku eppadi help pannanum? Products, pricing, demo — edhavadhu ketunga!";
+  if (q.includes("pric") || q.includes("cost") || q.includes("rate") || q.includes("vila") || q.includes("fee")) return "Our pricing: Starter ₹2,100/mo, Growth ₹4,200/mo, Professional ₹8,400/mo. Enterprise plan custom. 14-day free trial available!";
+  if (q.includes("demo") || q.includes("book") || q.includes("meeting")) return "Sure! Demo book panna lab-y-ai.vercel.app/contact ku ponga. Atho illa namma sales team ping pannala?";
+  if (q.includes("service") || q.includes("product") || q.includes("offer") || q.includes("enna") || q.includes("solution")) return "We have 5 AI Agents:\n🔹 Text Agent — Chatbots for websites & social media\n🔹 Voice Agent — Real phone calls in Tanglish\n🔹 Testing Agent — Automated QA\n🔹 Analytics Agent — Call insights & sentiment\n🔹 Media Agent — AI content generation\n\nEthula ungaluku interest?";
+  if (q.includes("voice") || q.includes("call") || q.includes("phone")) return "Our Voice Agent handles real phone calls using Vapi technology. It answers in Tanglish, captures leads, transfers to humans. Browser la um test pannalam!";
+  if (q.includes("text") || q.includes("chat") || q.includes("bot") || q.includes("whatsapp")) return "Text Agent websites, WhatsApp, Instagram, Facebook la integrate aagum. 24/7 Tanglish la lead capture pannum. Unga website la ready!";
+  if (q.includes("analytic") || q.includes("insight") || q.includes("report")) return "Analytics Agent tracks all calls — sentiment analysis, intent detection, conversion tracking, daily AI briefings. Data-driven decisions edukka help pannum!";
+  if (q.includes("media") || q.includes("image") || q.includes("video") || q.includes("content") || q.includes("poster")) return "Media Agent generates marketing visuals, social media posts, logos, videos from text prompts. AI-powered content creation!";
+  if (q.includes("test") || q.includes("qa")) return "Testing Agent automates QA — AI test generation, cross-browser testing, visual regression, bug reporting. QA time 80% reduce pannum!";
+  if (q.includes("contact") || q.includes("email") || q.includes("reach") || q.includes("phone")) return "Contact us at hello@lab-y.ai or visit lab-y-ai.vercel.app/contact. Quick demo book pannalam!";
+  if (q.includes("trial") || q.includes("free") || q.includes("start") || q.includes("begin")) return "14-day free trial on all plans! No credit card needed. Start panna lab-y-ai.vercel.app/contact la reach out pannunga!";
+  if (q.includes("bye") || q.includes("thanks") || q.includes("thank") || q.includes("nandri") || q.includes("okay")) return "Romba nandri! Ungaluku help panna mudinja santhosham. Demo book pannanum na contact page la reach out pannunga. Goodbye!";
+  return "Sorry, konjam clarify pannunga! Products, pricing, demo — edhavadhu specifically ketunga, naan help pannren!";
+}
+
 const GEMINI_OK = !!process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
 export default function TextAgentPage() {
   const [messages, setMessages] = useState<{ role: "user" | "ai"; text: string }[]>(
-    GEMINI_OK ? [] : [{ role: "ai", text: "Hi! I'm Yara, Lab Y's text agent. Ask me anything about our products!" }]
+    GEMINI_OK ? [] : [{ role: "ai", text: "Vanakkam! Naan Yara, Lab Y AI Solutions la AI agent. Ungaluku eppadi help pannanum?" }]
   );
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
@@ -21,15 +38,7 @@ export default function TextAgentPage() {
     setInput("");
     setMessages((prev) => [...prev, { role: "user", text }]);
     if (!GEMINI_OK) {
-      setTimeout(() => {
-        let reply = "That's a great question! I'd recommend checking our Services page or booking a demo.";
-        const q = text.toLowerCase();
-        if (q.includes("service") || q.includes("product")) reply = "We offer Enterprise SaaS, Micro SaaS, AI Voice Agents, and AI-Integrated CRMs. Which interests you?";
-        else if (q.includes("pric")) reply = "Starter $2,499/mo, Growth $6,999/mo, Enterprise custom. 14-day free trial!";
-        else if (q.includes("demo")) reply = "Sure! Visit our Contact page to schedule a demo.";
-        else if (q.includes("voice")) reply = "Our AI Voice Agents handle calls with natural conversation, sentiment analysis, and live handoff.";
-        setMessages((prev) => [...prev, { role: "ai", text: reply }]);
-      }, 800);
+      setTimeout(() => { setMessages((prev) => [...prev, { role: "ai", text: fallbackReply(text) }]); }, 500);
       return;
     }
     setThinking(true);
@@ -40,9 +49,10 @@ export default function TextAgentPage() {
         body: JSON.stringify({ message: text, history: [] }),
       });
       const data = await res.json();
-      setMessages((prev) => [...prev, { role: "ai", text: data.response || data.error || "Sorry, enakku puriyala. Konjam wait pannunga." }]);
-    } catch (e: any) {
-      setMessages((prev) => [...prev, { role: "ai", text: `⚠️ Error: ${e.message}` }]);
+      const reply = data.response || data.error || fallbackReply(text);
+      setMessages((prev) => [...prev, { role: "ai", text: reply.startsWith("⚠️") ? fallbackReply(text) : reply }]);
+    } catch {
+      setMessages((prev) => [...prev, { role: "ai", text: fallbackReply(text) }]);
     } finally { setThinking(false); }
   };
 

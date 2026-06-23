@@ -111,15 +111,25 @@ export default function VoiceAgent() {
         body: JSON.stringify({ message: text, history: chatRef.current }),
       });
       const data = await res.json();
-      const reply = data.response || data.error || "Sorry, enakku puriyala. Konjam wait pannunga.";
+      let reply = data.response || data.error || "";
+      if (!reply || reply.startsWith("⚠️")) {
+        const q = text.toLowerCase();
+        if (q.includes("pric") || q.includes("cost")) reply = "Start plan ₹2,100/mo, Growth ₹4,200/mo, Professional ₹8,400/mo. 14-day free trial!";
+        else if (q.includes("demo") || q.includes("book")) reply = "Demo book panna lab-y-ai.vercel.app/contact ku ponga!";
+        else if (q.includes("voice") || q.includes("call")) reply = "Voice Agent real phone calls handle pannum Tanglish la. Vapi technology use pannrom!";
+        else if (q.includes("text") || q.includes("chat")) reply = "Text Agent websites, WhatsApp, Instagram, Facebook la 24/7 lead capture pannum!";
+        else if (q.includes("service") || q.includes("product")) reply = "5 AI Agents: Text, Voice, Testing, Analytics, Media. Entha agent pathi ketunga!";
+        else if (q.includes("hi") || q.includes("vanakkam") || q.includes("hello")) reply = "Vanakkam! Naan Yara. Products, pricing, demo — edhavadhu ketunga!";
+        else reply = "Vanakkam! Naan Yara. Lab Y AI Solutions la AI agent. Products, pricing, demo — edhavadhu specifically ketunga!";
+      }
       setChat((prev) => [...prev, { role: "ai", text: reply }]);
       setThinking(false);
       if (tab === "browser") speak(reply);
-    } catch (e: any) {
-      const msg = `⚠️ Error: ${e.message}`;
-      setChat((prev) => [...prev, { role: "ai", text: msg }]);
+    } catch {
+      const fb = "Konjam technical issue. Wait panni try pannunga.";
+      setChat((prev) => [...prev, { role: "ai", text: fb }]);
       setThinking(false);
-      if (tab === "browser") speak("Konjam technical issue. Wait pannunga.");
+      if (tab === "browser") speak(fb);
     }
   }, [speak, tab]);
 
