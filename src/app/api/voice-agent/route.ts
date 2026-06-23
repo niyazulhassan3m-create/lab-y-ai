@@ -41,32 +41,35 @@ export async function POST(req: NextRequest) {
       { role: "user", content: message },
     ];
 
+    const body = JSON.stringify({
+      model: "gpt-4o-mini",
+      messages,
+      temperature: 0.7,
+      max_tokens: 200,
+    });
+
     const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${apiKey}`,
       },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages,
-        temperature: 0.7,
-        max_tokens: 100,
-      }),
+      body,
     });
 
     const data = await res.json();
 
     if (!res.ok) {
-      const errMsg = data.error?.message || "OpenAI API error";
-      console.error("OpenAI API error:", errMsg);
-      return NextResponse.json({ response: `⚠️ API Error: ${errMsg}` });
+      const errMsg = data?.error?.message || JSON.stringify(data);
+      return NextResponse.json({ status: "error", response: `⚠️ ${errMsg}` });
     }
 
-    const text = data?.choices?.[0]?.message?.content?.trim() || "Sorry, enakku puriyala. Konjam wait pannunga.";
-    return NextResponse.json({ response: text });
+    const text = data?.choices?.[0]?.message?.content?.trim();
+    if (!text) {
+      return NextResponse.json({ status: "error", response: "⚠️ OpenAI returned empty response. Konjam wait pannunga." });
+    }
+    return NextResponse.json({ status: "ok", response: text });
   } catch (err: any) {
-    console.error("Voice agent error:", err.message);
-    return NextResponse.json({ response: `⚠️ Server Error: ${err.message}` });
+    return NextResponse.json({ status: "error", response: `⚠️ ${err.message}` });
   }
 }

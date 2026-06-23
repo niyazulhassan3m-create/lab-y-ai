@@ -132,7 +132,7 @@ export default function AnalyticsAgentPage() {
         body: JSON.stringify({ message: text, history }),
       });
       const json = await res.json();
-      const reply = json.response || "Sorry, onnum puriyala. Konjam wait pannunga.";
+      const reply = json.response || json.error || "Sorry, onnum puriyala. Konjam wait pannunga.";
       setMessages((prev) => [...prev, { role: "ai", text: reply }]);
     } catch {
       setMessages((prev) => [...prev, { role: "ai", text: "Error: Server connect panna mudiyala. Clear panni try pannunga." }]);

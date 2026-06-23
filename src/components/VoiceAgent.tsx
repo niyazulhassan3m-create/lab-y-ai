@@ -111,7 +111,7 @@ export default function VoiceAgent() {
         body: JSON.stringify({ message: text, history: chatRef.current }),
       });
       const data = await res.json();
-      const reply = data.response || "Sorry, enakku puriyala. Konjam wait pannunga.";
+      const reply = data.response || data.error || "Sorry, enakku puriyala. Konjam wait pannunga.";
       setChat((prev) => [...prev, { role: "ai", text: reply }]);
       setThinking(false);
       if (tab === "browser") speak(reply);

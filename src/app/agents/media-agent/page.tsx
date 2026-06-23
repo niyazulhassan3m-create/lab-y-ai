@@ -30,7 +30,7 @@ export default function MediaAgentPage() {
         }),
       });
       const data = await res.json();
-      if (data.response) {
+      if (data.response && !data.response.startsWith("⚠️")) {
         setImage(`https://placehold.co/600x400/1e1e1e/9B2D3E?text=${encodeURIComponent(data.response.slice(0, 50))}`);
       }
     } catch {
