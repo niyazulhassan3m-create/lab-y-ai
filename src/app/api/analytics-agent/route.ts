@@ -60,15 +60,15 @@ export async function POST(req: NextRequest) {
     const data = await res.json();
 
     if (!res.ok) {
-      return NextResponse.json(
-        { error: data.error?.message || "OpenAI API error" },
-        { status: res.status }
-      );
+      const errMsg = data.error?.message || "OpenAI API error";
+      console.error("Analytics OpenAI error:", errMsg);
+      return NextResponse.json({ response: `⚠️ API Error: ${errMsg}` });
     }
 
     const text = data?.choices?.[0]?.message?.content?.trim() || "Sorry, enakku puriyala. Konjam wait pannunga.";
     return NextResponse.json({ response: text });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message || "Server error" }, { status: 500 });
+    console.error("Analytics agent error:", err.message);
+    return NextResponse.json({ response: `⚠️ Server Error: ${err.message}` });
   }
 }

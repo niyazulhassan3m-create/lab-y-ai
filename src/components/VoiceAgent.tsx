@@ -115,11 +115,11 @@ export default function VoiceAgent() {
       setChat((prev) => [...prev, { role: "ai", text: reply }]);
       setThinking(false);
       if (tab === "browser") speak(reply);
-    } catch {
-      const fallback = "Oops! Enaku konjam technical issue. Konjam wait pannunga.";
-      setChat((prev) => [...prev, { role: "ai", text: fallback }]);
+    } catch (e: any) {
+      const msg = `⚠️ Error: ${e.message}`;
+      setChat((prev) => [...prev, { role: "ai", text: msg }]);
       setThinking(false);
-      if (tab === "browser") speak(fallback);
+      if (tab === "browser") speak("Konjam technical issue. Wait pannunga.");
     }
   }, [speak, tab]);
 

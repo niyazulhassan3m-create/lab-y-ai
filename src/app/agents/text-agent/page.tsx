@@ -40,9 +40,9 @@ export default function TextAgentPage() {
         body: JSON.stringify({ message: text, history: [] }),
       });
       const data = await res.json();
-      setMessages((prev) => [...prev, { role: "ai", text: data.response || "Sorry, enakku puriyala." }]);
-    } catch {
-      setMessages((prev) => [...prev, { role: "ai", text: "Oops! Something went wrong." }]);
+      setMessages((prev) => [...prev, { role: "ai", text: data.response || "Sorry, enakku puriyala. Konjam wait pannunga." }]);
+    } catch (e: any) {
+      setMessages((prev) => [...prev, { role: "ai", text: `⚠️ Error: ${e.message}` }]);
     } finally { setThinking(false); }
   };
 
