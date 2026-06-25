@@ -169,7 +169,7 @@ export default function Home() {
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">One Platform. Five AI Agents.</h2>
               <p className="text-grey-400 text-lg max-w-2xl mx-auto">From customer conversations to content creation — all powered by AI with Tanglish support.</p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center" style={{ maxWidth: agents.length === 5 ? '900px' : undefined, margin: '0 auto' }}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
               {agents.map((a, i) => (
                 <motion.div
                   key={a.title}
@@ -179,7 +179,6 @@ export default function Home() {
                   viewport={{ once: true, margin: "-40px" }}
                   variants={fadeUp}
                   className="w-full"
-                  style={{ maxWidth: i === agents.length - 1 && agents.length % 3 !== 0 ? 'calc(50% - 10px)' : undefined }}
                 >
                   <Link href={a.href} className="group block h-full">
                     <GlassCard className="p-6 h-full">
