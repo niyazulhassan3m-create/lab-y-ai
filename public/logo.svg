@@ -1,108 +1,107 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 140" width="600" height="140">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
   <defs>
-    <linearGradient id="brand1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#e07070"/>
-      <stop offset="40%" stop-color="#d64b5a"/>
+    <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B2D3E"/>
       <stop offset="100%" stop-color="#7B1E2D"/>
     </linearGradient>
-    <linearGradient id="brand2" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#f0a0a0"/>
-      <stop offset="50%" stop-color="#9B2D3E"/>
-      <stop offset="100%" stop-color="#5C1420"/>
+    <linearGradient id="mg2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9B2D3E"/>
+      <stop offset="100%" stop-color="#7B1E2D"/>
     </linearGradient>
-    <radialGradient id="glowBg" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#9B2D3E" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#9B2D3E" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="edgeGlow">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="softGlow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-
-    <!-- Mask: cuts Y out of circle -->
-    <mask id="yMask">
-      <rect x="0" y="0" width="140" height="140" fill="white"/>
-      <g stroke="#000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
-        <!-- Left arm -->
-        <line x1="60" y1="55" x2="22" y2="14"/>
-        <!-- Right arm -->
-        <line x1="60" y1="55" x2="98" y2="14"/>
-        <!-- Stem -->
-        <line x1="60" y1="55" x2="60" y2="106"/>
-      </g>
-    </mask>
-
-    <style>
-      @keyframes glow {
-        0%, 100% { opacity: 0.15; }
-        50% { opacity: 0.4; }
-      }
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-2px); }
-      }
-      @keyframes edgePulse {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 0.7; }
-      }
-      .glow-pulse { animation: glow 3s ease-in-out infinite; transform-origin: center; }
-      .edge-pulse { animation: edgePulse 2.5s ease-in-out infinite; }
-      .float-slow { animation: float 4s ease-in-out infinite; }
-    </style>
+    <linearGradient id="mg3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7B1E2D"/>
+      <stop offset="100%" stop-color="#9B2D3E"/>
+    </linearGradient>
   </defs>
 
-  <!-- Background ambient glow -->
-  <circle cx="70" cy="70" r="62" fill="url(#glowBg)"/>
+  <!-- Wolf-Y Icon -->
+  <g transform="translate(18,14)">
+    <!-- Geometric shield frame -->
+    <polygon points="40,0 76,10 76,54 40,88 4,54 4,10" fill="none" stroke="url(#mg)" stroke-width="1.2" opacity="0.25"/>
 
-  <!-- ===== NEGATIVE SPACE Y MARK ===== -->
-  <g transform="translate(10, 10)" class="float-slow">
+    <!-- Wolf ears - sharp triangular -->
+    <polygon points="18,8 28,14 24,24" fill="#1A1A1A"/>
+    <polygon points="62,8 52,14 56,24" fill="#1A1A1A"/>
 
-    <!-- Outer decorative ring -->
-    <circle cx="60" cy="55" r="51" fill="none" stroke="url(#brand1)" stroke-width="0.5" opacity="0.1"/>
+    <!-- Wolf head - faceted geometry -->
+    <!-- Forehead / crown -->
+    <polygon points="40,12 54,18 52,28 28,28 26,18" fill="#1A1A1A"/>
 
-    <!-- Main circle with Y punched out -->
-    <circle cx="60" cy="55" r="48" fill="url(#brand1)" mask="url(#yMask)"/>
+    <!-- Left cheek -->
+    <polygon points="26,18 18,24 14,36 22,46 32,42 28,32 28,28" fill="#1A1A1A"/>
 
-    <!-- Y edge glow: makes the cutout visible even on dark background -->
-    <g stroke="#f0a0a0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5" class="edge-pulse">
-      <line x1="60" y1="55" x2="22" y2="14"/>
-      <line x1="60" y1="55" x2="98" y2="14"/>
-      <line x1="60" y1="55" x2="60" y2="106"/>
-    </g>
-    <!-- Secondary wider glow layer -->
-    <g stroke="#e07070" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.08">
-      <line x1="60" y1="55" x2="22" y2="14"/>
-      <line x1="60" y1="55" x2="98" y2="14"/>
-      <line x1="60" y1="55" x2="60" y2="106"/>
-    </g>
+    <!-- Right cheek -->
+    <polygon points="52,28 52,32 48,42 58,46 66,36 62,24 54,18" fill="#1A1A1A"/>
 
-    <!-- Y break-out frame accents -->
-    <line x1="22" y1="14" x2="17" y2="9" stroke="#f0a0a0" stroke-width="1" opacity="0.2"/>
-    <line x1="98" y1="14" x2="103" y2="9" stroke="#f0a0a0" stroke-width="1" opacity="0.2"/>
-    <line x1="60" y1="106" x2="60" y2="112" stroke="#f0a0a0" stroke-width="1" opacity="0.2"/>
+    <!-- Snout - forms the Y stem downward -->
+    <polygon points="32,42 40,56 48,42" fill="#1A1A1A"/>
 
-    <!-- Glowing endpoint markers -->
-    <circle cx="22" cy="14" r="2.5" fill="#f0a0a0" filter="url(#edgeGlow)" opacity="0.7"/>
-    <circle cx="98" cy="14" r="2.5" fill="#e07070" filter="url(#edgeGlow)" opacity="0.7"/>
-    <circle cx="60" cy="106" r="2.5" fill="#d64b5a" filter="url(#edgeGlow)" opacity="0.7"/>
+    <!-- Lower jaw -->
+    <polygon points="22,46 32,54 40,62 48,54 58,46" fill="#1A1A1A"/>
 
-    <!-- Inner ring glow (subtle) -->
-    <circle cx="60" cy="55" r="48" fill="none" stroke="#f0a0a0" stroke-width="1.5" opacity="0.2" mask="url(#yMask)" class="glow-pulse"/>
+    <!-- Chin -->
+    <polygon points="32,54 40,64 48,54" fill="#1A1A1A"/>
 
-    <!-- Ambient micro-dots -->
-    <circle cx="35" cy="35" r="1" fill="#e07070" opacity="0.15"/>
-    <circle cx="85" cy="35" r="1" fill="#e07070" opacity="0.12"/>
-    <circle cx="45" cy="80" r="1" fill="#d64b5a" opacity="0.12"/>
-    <circle cx="75" cy="80" r="1" fill="#d64b5a" opacity="0.1"/>
+    <!-- Maroon Y accent - inner glow cutout -->
+    <polygon points="40,34 36,24 32,28 36,38 32,48 36,46 40,56 44,46 48,48 44,38 48,28 44,24" fill="url(#mg)"/>
+
+    <!-- Left eye - sharp -->
+    <polygon points="24,22 30,24 28,30 22,28" fill="#1A1A1A"/>
+    <circle cx="26" cy="26" r="1.5" fill="#fff"/>
+
+    <!-- Right eye - sharp -->
+    <polygon points="56,22 50,24 52,30 58,28" fill="#1A1A1A"/>
+    <circle cx="54" cy="26" r="1.5" fill="#fff"/>
+
+    <!-- Nose -->
+    <polygon points="38,30 42,30 40,34" fill="#9B2D3E"/>
+
+    <!-- Neural circuit lines - left side -->
+    <line x1="4" y1="10" x2="16" y2="22" stroke="url(#mg)" stroke-width="0.8" opacity="0.4"/>
+    <circle cx="4" cy="10" r="1.5" fill="#9B2D3E"/>
+    <circle cx="4" cy="10" r="3" fill="#9B2D3E" opacity="0.2"/>
+    <line x1="8" y1="26" x2="18" y2="34" stroke="url(#mg)" stroke-width="0.6" opacity="0.25"/>
+    <circle cx="8" cy="26" r="1" fill="#7B1E2D" opacity="0.5"/>
+    <line x1="4" y1="44" x2="18" y2="42" stroke="url(#mg)" stroke-width="0.6" opacity="0.2"/>
+
+    <!-- Neural circuit lines - right side -->
+    <line x1="76" y1="10" x2="64" y2="22" stroke="url(#mg)" stroke-width="0.8" opacity="0.4"/>
+    <circle cx="76" cy="10" r="1.5" fill="#9B2D3E"/>
+    <circle cx="76" cy="10" r="3" fill="#9B2D3E" opacity="0.2"/>
+    <line x1="72" y1="26" x2="62" y2="34" stroke="url(#mg)" stroke-width="0.6" opacity="0.25"/>
+    <circle cx="72" cy="26" r="1" fill="#7B1E2D" opacity="0.5"/>
+    <line x1="76" y1="44" x2="62" y2="42" stroke="url(#mg)" stroke-width="0.6" opacity="0.2"/>
+
+    <!-- Bottom neural connections -->
+    <line x1="18" y1="48" x2="10" y2="60" stroke="url(#mg)" stroke-width="0.6" opacity="0.25"/>
+    <circle cx="10" cy="60" r="1.2" fill="#9B2D3E" opacity="0.5"/>
+    <line x1="62" y1="48" x2="70" y2="60" stroke="url(#mg)" stroke-width="0.6" opacity="0.25"/>
+    <circle cx="70" cy="60" r="1.2" fill="#9B2D3E" opacity="0.5"/>
+
+    <!-- Center neural node below chin -->
+    <circle cx="40" cy="70" r="1.5" fill="#9B2D3E" opacity="0.4"/>
+    <line x1="40" y1="64" x2="40" y2="70" stroke="url(#mg)" stroke-width="0.6" opacity="0.3"/>
+    <line x1="40" y1="70" x2="40" y2="78" stroke="url(#mg)" stroke-width="0.5" opacity="0.15"/>
   </g>
 
-  <!-- ===== TYPOGRAPHY ===== -->
-  <text x="142" y="60" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="44" font-weight="700" fill="#f5f5f5" letter-spacing="3.5">LAB</text>
-  <text x="248" y="64" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="48" font-weight="800" fill="url(#brand1)" letter-spacing="4">Y</text>
-  <text x="142" y="94" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11.5" fill="#777777" letter-spacing="7.5" font-weight="500">INNOVATING INTELLIGENCE</text>
-  <line x1="142" y1="111" x2="370" y2="111" stroke="url(#brand1)" stroke-width="1" opacity="0.15"/>
+  <!-- Typography -->
+  <g transform="translate(110,32)">
+    <!-- "LAB" -->
+    <text x="0" y="0" font-family="'Sora','Inter',-apple-system,sans-serif" font-size="30" font-weight="700" fill="#1A1A1A" letter-spacing="4">LAB</text>
+
+    <!-- "Y" - maroon -->
+    <text x="0" y="24" font-family="'Sora','Inter',-apple-system,sans-serif" font-size="30" font-weight="700" fill="url(#mg3)" letter-spacing="4">Y</text>
+
+    <!-- Vertical divider -->
+    <line x1="83" y1="-4" x2="83" y2="26" stroke="url(#mg2)" stroke-width="1.5" opacity="0.3"/>
+
+    <!-- "AI SOLUTIONS" -->
+    <text x="95" y="10" font-family="'Space Grotesk','Inter',-apple-system,sans-serif" font-size="9" font-weight="500" fill="#1A1A1A" letter-spacing="5">AI SOLUTIONS</text>
+
+    <!-- "INNOVATING INTELLIGENCE" tagline -->
+    <text x="95" y="26" font-family="'Space Grotesk','Inter',-apple-system,sans-serif" font-size="7" font-weight="400" fill="#888" letter-spacing="3.5">INNOVATING INTELLIGENCE</text>
+  </g>
+
+  <!-- Decorative bottom line -->
+  <line x1="110" y1="76" x2="380" y2="76" stroke="url(#mg2)" stroke-width="0.5" opacity="0.2"/>
 </svg>
