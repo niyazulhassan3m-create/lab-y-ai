@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import NeuralNetwork from "@/components/NeuralNetwork";
 import GlassCard from "@/components/GlassCard";
 import AnimatedSection from "@/components/AnimatedSection";
-import CustomCursor from "@/components/CustomCursor";
 
 const agents = [
   { emoji: "💬", title: "Text Agent", desc: "Chatbots for websites, WhatsApp, Instagram & Facebook", href: "/agents/text-agent" },
@@ -33,8 +32,6 @@ const steps = [
 export default function Home() {
   return (
     <>
-      <CustomCursor />
-
       {/* Hero */}
       <section className="relative pt-36 pb-20 px-4 overflow-hidden min-h-screen flex items-center">
         <NeuralNetwork />
