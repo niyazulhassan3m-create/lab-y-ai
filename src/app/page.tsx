@@ -94,7 +94,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-accent-900/5 via-transparent to-transparent pointer-events-none" />
           <div className="max-w-5xl mx-auto relative z-10">
             <GlassCard className="p-8" floatDelay={0}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 {[
                   { value: "5", label: "AI Agents" },
                   { value: "50+", label: "Enterprise Clients" },
@@ -106,6 +106,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 + i * 0.1 }}
+                    className="py-2"
                   >
                     <p className="text-3xl md:text-4xl font-bold bg-gradient-to-b from-accent-400 to-accent-600 bg-clip-text text-transparent">{s.value}</p>
                     <p className="text-[11px] tracking-[0.15em] uppercase text-grey-500 mt-1">{s.label}</p>
@@ -132,7 +133,7 @@ export default function Home() {
               understand Tanglish, respond naturally, and automate your business 24/7.
             </p>
           </div>
-          <div className="max-w-5xl mx-auto relative z-10">
+          <div className="max-w-[940px] mx-auto relative z-10">
             <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 text-center mb-8">How It Works</p>
             <div className="grid md:grid-cols-3 gap-6">
               {steps.map((s, i) => (
@@ -148,7 +149,7 @@ export default function Home() {
                   <GlassCard className="p-8 h-full" floatDelay={i * 0.4}>
                     <span className="text-4xl font-bold text-accent-600/30 block mb-4">{s.num}</span>
                     <h3 className="text-lg font-bold mb-2">{s.title}</h3>
-                    <p className="text-sm text-grey-400">{s.desc}</p>
+                    <p className="text-sm text-grey-400 leading-relaxed">{s.desc}</p>
                   </GlassCard>
                 </motion.div>
               ))}
@@ -169,7 +170,7 @@ export default function Home() {
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">One Platform. Five AI Agents.</h2>
               <p className="text-grey-400 text-lg max-w-2xl mx-auto">From customer conversations to content creation — all powered by AI with Tanglish support.</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
+            <div className="flex flex-wrap justify-center gap-6 max-w-[940px] mx-auto">
               {agents.map((a, i) => (
                 <motion.div
                   key={a.title}
@@ -178,13 +179,13 @@ export default function Home() {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-40px" }}
                   variants={fadeUp}
-                  className="w-full"
+                  className="w-full sm:w-[280px]"
                 >
                   <Link href={a.href} className="group block h-full">
                     <GlassCard className="p-8 h-full text-center" floatDelay={i * 0.35}>
                       <span className="text-3xl block mb-4">{a.emoji}</span>
                       <h3 className="text-base font-bold mb-1 group-hover:text-accent-400 transition-colors">{a.title}</h3>
-                      <p className="text-xs text-grey-400 leading-relaxed">{a.desc}</p>
+                      <p className="text-sm text-grey-400 leading-relaxed">{a.desc}</p>
                     </GlassCard>
                   </Link>
                 </motion.div>
@@ -201,7 +202,7 @@ export default function Home() {
       <AnimatedSection>
         <section className="py-24 px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <GlassCard className="p-12 md:p-16" floatDelay={0.2}>
+            <GlassCard className="p-10 md:p-14" floatDelay={0.2}>
               <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 mb-4">14-Day Free Trial</p>
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
               <p className="text-grey-400 mb-8 max-w-lg mx-auto">
