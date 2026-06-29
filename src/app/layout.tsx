@@ -39,7 +39,8 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${sora.variable} h-full antialiased`}
     >
       <head>
-        <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/ef8a59c146027de56b9f1646a6c36ce0?family=Cassannet+Plus" />
+        <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/a7782839fe4163b8cf34b492ded09e67?family=The+Delicate+DEMO" />
+        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/simple-pleasure" />
       </head>
       <body className="min-h-full flex flex-col">
         <ParticlesBackground />
