@@ -7,12 +7,12 @@ import GlassCard from "@/components/GlassCard";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const agents = [
-  { emoji: "≡ƒÆ¼", title: "Text Agent", desc: "Chatbots for websites, WhatsApp, Instagram & Facebook", href: "/agents/text-agent" },
-  { emoji: "≡ƒÄÖ∩╕Å", title: "Voice Agent", desc: "Inbound & outbound AI voice calls with Tanglish", href: "/agents/voice-agent" },
-  { emoji: "≡ƒº¬", title: "Testing Agent", desc: "AI-powered QA automation at scale", href: "/agents/testing-agent" },
-  { emoji: "≡ƒôè", title: "Analytics Agent", desc: "Ad & performance analytics with AI insights", href: "/agents/analytics-agent" },
-  { emoji: "≡ƒÄ¿", title: "Media Agent", desc: "AI content & image generation", href: "/agents/media-agent" },
-  { emoji: "≡ƒîÉ", title: "Website Developing", desc: "AI-integrated custom website development ΓÇö we build for you", href: "/agents/website-agent" },
+  { emoji: "💬", title: "Text Agent", desc: "Chatbots for websites, WhatsApp, Instagram & Facebook", href: "/agents/text-agent" },
+  { emoji: "🎙️", title: "Voice Agent", desc: "Inbound & outbound AI voice calls with Tanglish", href: "/agents/voice-agent" },
+  { emoji: "🧪", title: "Testing Agent", desc: "AI-powered QA automation at scale", href: "/agents/testing-agent" },
+  { emoji: "📊", title: "Analytics Agent", desc: "Ad & performance analytics with AI insights", href: "/agents/analytics-agent" },
+  { emoji: "🎨", title: "Media Agent", desc: "AI content & image generation", href: "/agents/media-agent" },
+  { emoji: "🌐", title: "Website Developing", desc: "AI-integrated custom website development — we build for you", href: "/agents/website-agent" },
 ];
 
 const fadeUp = {
@@ -25,9 +25,9 @@ const fadeUp = {
 };
 
 const steps = [
-  { num: "01", title: "Choose Your Agent", desc: "Pick from 6 specialized AI services ΓÇö Text, Voice, Testing, Analytics, Media, or Website." },
+  { num: "01", title: "Choose Your Agent", desc: "Pick from 6 specialized AI services — Text, Voice, Testing, Analytics, Media, or Website." },
   { num: "02", title: "Deploy in Minutes", desc: "No coding needed. Our platform connects your business in under 15 minutes." },
-  { num: "03", title: "Watch It Work", desc: "Your AI agent handles conversations, tests, analytics, and content ΓÇö all in Tanglish." },
+  { num: "03", title: "Watch It Work", desc: "Your AI agent handles conversations, tests, analytics, and content — all in Tanglish." },
 ];
 
 export default function Home() {
@@ -66,7 +66,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-grey-400 text-lg sm:text-xl max-w-2xl mx-auto mb-8"
           >
-            Text Agent <span className="text-grey-600">ΓÇó</span> Voice Agent <span className="text-grey-600">ΓÇó</span> Testing <span className="text-grey-600">ΓÇó</span> Analytics <span className="text-grey-600">ΓÇó</span> Media <span className="text-grey-600">ΓÇó</span> Website
+            Text Agent <span className="text-grey-600">•</span> Voice Agent <span className="text-grey-600">•</span> Testing <span className="text-grey-600">•</span> Analytics <span className="text-grey-600">•</span> Media <span className="text-grey-600">•</span> Website
           </motion.p>
 
           <motion.div
@@ -130,7 +130,7 @@ export default function Home() {
             <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 mb-3">Our AI Technology</p>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Built on Advanced AI</h2>
             <p className="text-grey-300 text-lg max-w-2xl mx-auto mb-16">
-              Powered by Google Gemini, Web Speech API, and Vapi telephony ΓÇö our agents
+              Powered by Google Gemini, Web Speech API, and Vapi telephony — our agents
               understand Tanglish, respond naturally, and automate your business 24/7.
             </p>
           </div>
@@ -169,7 +169,7 @@ export default function Home() {
             <div className="text-center mb-14">
               <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 mb-3">The Agent Team</p>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">One Platform. Five AI Agents.</h2>
-              <p className="text-grey-400 text-lg max-w-2xl mx-auto">From customer conversations to content creation ΓÇö all powered by AI with Tanglish support.</p>
+              <p className="text-grey-400 text-lg max-w-2xl mx-auto">From customer conversations to content creation — all powered by AI with Tanglish support.</p>
             </div>
             <div className="flex flex-wrap justify-center gap-6 max-w-[940px] mx-auto">
               {agents.map((a, i) => (
@@ -207,7 +207,7 @@ export default function Home() {
               <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 mb-4">14-Day Free Trial</p>
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
               <p className="text-grey-400 mb-8 max-w-lg mx-auto">
-                Deploy AI agents that automate sales, support, marketing, and analytics ΓÇö all with natural Tanglish conversation.
+                Deploy AI agents that automate sales, support, marketing, and analytics — all with natural Tanglish conversation.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Link href="/contact" className="group relative px-8 py-3.5 rounded-lg bg-accent-600 text-white text-[11px] font-bold tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:bg-accent-500 animate-float">
@@ -225,3 +225,5 @@ export default function Home() {
     </>
   );
 }
+
+
