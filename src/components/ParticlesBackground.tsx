@@ -2,13 +2,6 @@
 
 import { useEffect, useRef } from "react";
 
-const COLORS = [
-  [123, 30, 45],   // #7B1E2D deep maroon
-  [155, 45, 62],   // #9B2D3E maroon
-  [200, 74, 74],   // #c84a4a warm amber
-  [224, 112, 112], // #e07070 light ember
-];
-
 export default function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -24,95 +17,65 @@ export default function ParticlesBackground() {
     canvas.width = w;
     canvas.height = h;
 
-    const mouse = { x: -9999, y: -9999 };
+    const gap = 80;
+    const cols = Math.floor(w / gap) + 1;
+    const rows = Math.floor(h / gap) + 1;
+    const particles: { x: number; y: number; r: number; phase: number; speed: number; glow: number; hue: number }[] = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        particles.push({
+          x: c * gap + (Math.random() - 0.5) * 12,
+          y: r * gap + (Math.random() - 0.5) * 12,
+          r: Math.random() * 2 + 1,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.3 + Math.random() * 0.5,
+          glow: Math.random() * 6 + 3,
+          hue: Math.random() < 0.3 ? 3 : 0,
+        });
+      }
+    }
 
-    const count = Math.min(50, Math.floor((w * h) / 30000));
-    const particles = Array.from({ length: count }, () => {
-      const ci = Math.floor(Math.random() * COLORS.length);
-      return {
-        x: Math.random() * w,
-        y: Math.random() * h + h,
-        vy: -(Math.random() * 0.25 + 0.08),
-        vx: (Math.random() - 0.5) * 0.15,
-        r: Math.random() * 2.5 + 1.0,
-        glowR: Math.random() * 12 + 6,
-        color: COLORS[ci],
-        phase: Math.random() * Math.PI * 2,
-        pulseSpeed: Math.random() * 0.02 + 0.008,
-        wobbleAmp: Math.random() * 0.3 + 0.1,
-        wobbleSpeed: Math.random() * 0.01 + 0.005,
-        wobbleOffset: Math.random() * Math.PI * 2,
-        baseA: Math.random() * 0.4 + 0.2,
-      };
-    });
+    let time = 0;
 
     const draw = () => {
+      time += 0.02;
       ctx.clearRect(0, 0, w, h);
 
       for (const p of particles) {
-        p.y += p.vy;
-        p.x += p.vx + Math.sin(Date.now() * p.wobbleSpeed + p.wobbleOffset) * p.wobbleAmp;
+        const pulse = (Math.sin(time * p.speed + p.phase) + 1) / 2;
+        const pr = p.r + pulse * 2;
+        const pa = 0.15 + pulse * 0.45;
 
-        if (p.y + p.glowR < 0) {
-          p.y = h + p.glowR;
-          p.x = Math.random() * w;
-        }
-        if (p.x < -p.glowR) p.x = w + p.glowR;
-        if (p.x > w + p.glowR) p.x = -p.glowR;
-
-        const dx = p.x - mouse.x;
-        const dy = p.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const force = (120 - dist) / 120;
-          p.x += (dx / dist) * force * 1.2;
-          p.y += (dy / dist) * force * 1.2;
-        }
-
-        const pulse = Math.sin(Date.now() * p.pulseSpeed + p.phase) * 0.3 + 0.7;
-        const alpha = p.baseA * pulse * 0.8;
-
-        const [cr, cg, cb] = p.color;
-
-        const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.glowR);
-        grd.addColorStop(0, `rgba(${cr}, ${cg}, ${cb}, ${alpha * 0.6})`);
-        grd.addColorStop(0.3, `rgba(${cr}, ${cg}, ${cb}, ${alpha * 0.2})`);
-        grd.addColorStop(1, `rgba(${cr}, ${cg}, ${cb}, 0)`);
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.glowR, 0, Math.PI * 2);
-        ctx.fillStyle = grd;
-        ctx.fill();
+        const r = 110 + pulse * 35 + p.hue;
+        const g = 30 + pulse * 15;
+        const b = 40 + pulse * 10;
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${cr}, ${cg}, ${cb}, ${alpha})`;
+        ctx.arc(p.x, p.y, pr, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${pa})`;
         ctx.fill();
+
+        if (pulse > 0.7) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, pr + p.glow, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${(pulse - 0.7) * 0.2})`;
+          ctx.fill();
+        }
       }
+
       animId = requestAnimationFrame(draw);
     };
     draw();
 
-    const onMouse = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    };
-    const onLeave = () => {
-      mouse.x = -9999;
-      mouse.y = -9999;
-    };
     const onResize = () => {
       w = window.innerWidth;
       h = window.innerHeight;
       canvas.width = w;
       canvas.height = h;
     };
-    window.addEventListener("mousemove", onMouse);
-    window.addEventListener("mouseleave", onLeave);
     window.addEventListener("resize", onResize);
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener("mousemove", onMouse);
-      window.removeEventListener("mouseleave", onLeave);
       window.removeEventListener("resize", onResize);
     };
   }, []);
@@ -121,6 +84,7 @@ export default function ParticlesBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
+      style={{ opacity: 0.6 }}
     />
   );
 }
