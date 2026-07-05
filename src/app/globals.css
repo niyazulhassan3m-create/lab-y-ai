@@ -30,7 +30,7 @@
   --color-border: #2a2a2a;
   --color-muted: #888888;
   --font-sans: var(--font-sans);
-  --font-heading: "Cassannet Plus", var(--font-heading-fallback);
+  --font-heading: var(--font-cassannet), var(--font-heading-fallback);
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
@@ -43,6 +43,10 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   letter-spacing: -0.03em;
+}
+
+.logo-heading {
+  font-family: var(--font-heading);
 }
 
 ::-webkit-scrollbar {

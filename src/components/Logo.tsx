@@ -39,8 +39,8 @@ export default function Logo({ className = "h-16 w-auto" }: { className?: string
           <circle cx="98" cy="14" r="2.5" fill="#e07070" filter="url(#leg)" opacity="0.7"/>
           <circle cx="60" cy="106" r="2.5" fill="#d64b5a" filter="url(#leg)" opacity="0.7"/>
         </g>
-        <text x="142" y="60" font-family="'Cassannet Plus','Sora','Inter',sans-serif" font-size="44" font-weight="700" fill="#f5f5f5" letter-spacing="3.5">LAB</text>
-        <text x="248" y="64" font-family="'Cassannet Plus','Sora','Inter',sans-serif" font-size="48" font-weight="800" fill="url(#lb1)" letter-spacing="4">Y</text>
+        <text x="142" y="60" font-size="44" font-weight="700" fill="#f5f5f5" letter-spacing="3.5" className="logo-heading">LAB</text>
+        <text x="248" y="64" font-size="48" font-weight="800" fill="url(#lb1)" letter-spacing="4" className="logo-heading">Y</text>
         <text x="142" y="94" font-family="'Space Grotesk','Inter',sans-serif" font-size="11.5" fill="#777" letter-spacing="7.5" font-weight="500">INNOVATING INTELLIGENCE</text>
         <line x1="142" y1="111" x2="370" y2="111" stroke="url(#lb1)" stroke-width="1" opacity="0.15"/>
       </svg>

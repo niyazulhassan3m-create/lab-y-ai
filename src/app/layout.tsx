@@ -1,10 +1,18 @@
 ﻿import type { Metadata } from "next";
 import { Space_Grotesk, Sora } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import ParticlesBackground from "@/components/ParticlesBackground";
+
+const cassannetPlus = localFont({
+  src: "../fonts/cassannet-plus.woff2",
+  weight: "400",
+  variable: "--font-cassannet",
+  display: "swap",
+});
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-sans",
@@ -36,11 +44,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${sora.variable} h-full antialiased`}
+      className={`${cassannetPlus.variable} ${spaceGrotesk.variable} ${sora.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/ef8a59c146027de56b9f1646a6c36ce0?family=Cassannet+Plus" />
-      </head>
       <body className="min-h-full flex flex-col">
         <ParticlesBackground />
         <Header />
