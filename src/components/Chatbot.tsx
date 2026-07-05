@@ -6,21 +6,25 @@ const responses: Record<string, string> = {
   hello:
     "Hi there! I'm Yara, your AI assistant. How can I help you today? 😊",
   services:
-    "We offer 4 main products:\n\n⚙️ Enterprise SaaS\n📦 Micro SaaS\n🎙️ AI Voice Agents\n🧠 AI-Integrated CRMs\n\nWhich one interests you?",
+    "We offer 6 AI services:\n\n💬 Text Agent — Chatbots for websites & social media\n🎙️ Voice Agent — Real phone calls in Tanglish\n🧪 Testing Agent — Automated QA at scale\n📊 Analytics Agent — Ad & performance insights\n🎨 Media Agent — AI content & image generation\n🌐 Website Developing — Custom AI-integrated websites\n\nWhich one interests you?",
   pricing:
-    "Our pricing starts at $2,499/month for Starter, $6,999/month for Growth, and custom pricing for Enterprise. All plans include a 14-day free trial! 🚀",
+    "Our pricing starts at ₹2,100/month for Starter, ₹4,200/month for Growth, and ₹8,400/month for Professional. Enterprise plan custom. 14-day free trial on all plans! 🚀",
   demo:
-    "I'd love to show you a demo! We have walkthroughs for all our products. Head to our Demos page or let me know which product you'd like to see!",
+    "I'd love to show you a demo! We have interactive demos for all 6 AI services. Head to our Demos page or let me know which one you'd like to see!",
   contact:
     "You can reach us at hello@lab-y.ai or use the Contact form on our site. We typically respond within 24 hours! 📬",
   voice:
-    "Our AI Voice Agents handle sales calls, customer support, and scheduling with human-like conversation. They support multiple languages and can handoff to live agents when needed! 🎙️",
-  crm:
-    "Our AI-Integrated CRMs feature lead scoring, predictive analytics, automated follow-ups, and sentiment analysis. They integrate seamlessly with your existing tools! 🧠",
-  saas:
-    "Our Enterprise SaaS platforms feature multi-tenant architecture, role-based access, real-time analytics, and SOC 2 compliant security. Built to scale with your business! ⚙️",
-  micro:
-    "Our Micro SaaS products are lightweight, purpose-built solutions that deploy in 2-4 weeks. Pay-as-you-grow pricing with minimal learning curve! 📦",
+    "Our AI Voice Agents handle sales calls, customer support, and scheduling with human-like conversation in Tanglish. Supports Vapi real phone calls and browser voice! 🎙️",
+  analytics:
+    "Analytics Agent tracks ad performance, call insights, sentiment analysis, and conversion data. AI-powered reports and recommendations in Tanglish! 📊",
+  media:
+    "Media Agent generates marketing visuals, social posts, logos, and videos from text prompts. AI-powered content creation for your brand! 🎨",
+  testing:
+    "Testing Agent automates QA with AI test generation, cross-browser testing, visual regression, and bug reporting. QA time 80% reduce pannum! 🧪",
+  textagent:
+    "Text Agent integrates with websites, WhatsApp, Instagram & Facebook. 24/7 lead capture and Tanglish conversation. Deploy in minutes! 💬",
+  website:
+    "Website Developing — naama ungaluku custom AI-integrated website build panni kuduppom! AI features like chatbots, voice agents, analytics dashboards ellam include. Unga requirements describe panna, full site deliver pannuvom! 🌐",
   default:
     "That's a great question! Let me connect you with our team for a detailed answer. Meanwhile, you can check our Services page or book a demo! 😊",
 };
@@ -64,20 +68,24 @@ export default function Chatbot() {
         reply = responses.hello;
       else if (q.includes("service") || q.includes("product") || q.includes("offer"))
         reply = responses.services;
-      else if (q.includes("pric") || q.includes("cost") || q.includes("price") || q.includes("plan"))
+      else if (q.includes("pric") || q.includes("cost") || q.includes("plan"))
         reply = responses.pricing;
       else if (q.includes("demo") || q.includes("see") || q.includes("show"))
         reply = responses.demo;
       else if (q.includes("contact") || q.includes("email") || q.includes("reach"))
         reply = responses.contact;
-      else if (q.includes("voice") || q.includes("agent") || q.includes("call"))
+      else if (q.includes("voice") || q.includes("call"))
         reply = responses.voice;
-      else if (q.includes("crm"))
-        reply = responses.crm;
-      else if (q.includes("saas") || q.includes("enterprise"))
-        reply = responses.saas;
-      else if (q.includes("micro"))
-        reply = responses.micro;
+      else if (q.includes("analytics") || q.includes("insight"))
+        reply = responses.analytics;
+      else if (q.includes("media") || q.includes("image") || q.includes("video") || q.includes("content"))
+        reply = responses.media;
+      else if (q.includes("test") || q.includes("qa"))
+        reply = responses.testing;
+      else if (q.includes("text") || q.includes("chat") || q.includes("whatsapp") || q.includes("bot"))
+        reply = responses.textagent;
+      else if (q.includes("website") || q.includes("site") || q.includes("web") || q.includes("landing"))
+        reply = responses.website;
 
       setMessages((prev) => [...prev, { text: reply, isUser: false }]);
       setTyping(false);

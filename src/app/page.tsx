@@ -1,227 +1,303 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import NeuralNetwork from "@/components/NeuralNetwork";
-import GlassCard from "@/components/GlassCard";
-import AnimatedSection from "@/components/AnimatedSection";
+import { useState, useEffect, useCallback } from "react";
+import { Inter } from "next/font/google";
+import { Search, User, Menu, X, Star, Clock, Calendar, Play, ChevronLeft, ChevronRight } from "lucide-react";
 
-const agents = [
-  { emoji: "💬", title: "Text Agent", desc: "Chatbots for websites, WhatsApp, Instagram & Facebook", href: "/agents/text-agent" },
-  { emoji: "🎙️", title: "Voice Agent", desc: "Inbound & outbound AI voice calls with Tanglish", href: "/agents/voice-agent" },
-  { emoji: "🧪", title: "Testing Agent", desc: "AI-powered QA automation at scale", href: "/agents/testing-agent" },
-  { emoji: "📊", title: "Analytics Agent", desc: "Ad & performance analytics with AI insights", href: "/agents/analytics-agent" },
-  { emoji: "🎨", title: "Media Agent", desc: "AI content & image generation", href: "/agents/media-agent" },
-  { emoji: "🌐", title: "Website Developing", desc: "AI-integrated custom website development — we build for you", href: "/agents/website-agent" },
-];
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number], delay: i * 0.1 },
-  }),
-};
+const navLinks = ["Movies", "TV Series", "Editor's Pick", "Interviews", "User Reviews"];
 
-const steps = [
-  { num: "01", title: "Choose Your Agent", desc: "Pick from 6 specialized AI services — Text, Voice, Testing, Analytics, Media, or Website." },
-  { num: "02", title: "Deploy in Minutes", desc: "No coding needed. Our platform connects your business in under 15 minutes." },
-  { num: "03", title: "Watch It Work", desc: "Your AI agent handles conversations, tests, analytics, and content — all in Tanglish." },
-];
+const staggerNav = [100, 150, 200, 250, 300];
 
 export default function Home() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const toggleMobile = useCallback(() => setMobileOpen((p) => !p), []);
+
+  useEffect(() => {
+    document.body.style.fontFamily = "'Inter', sans-serif";
+    return () => { document.body.style.fontFamily = ""; };
+  }, []);
+
   return (
-    <>
-      {/* Hero */}
-      <section className="relative pt-36 pb-20 px-4 overflow-hidden min-h-screen flex items-center">
-        <NeuralNetwork />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background pointer-events-none z-[1]" />
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-600/20 bg-accent-600/10 backdrop-blur-sm mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent-400 animate-pulse" />
-              <span className="text-[10px] tracking-[0.2em] uppercase text-accent-400 font-medium">All-in-One AI Platform</span>
-            </div>
-          </motion.div>
+    <div className={`${inter.className} relative h-screen w-screen overflow-hidden bg-black text-white`}>
+      <style jsx global>{`
+        @keyframes blurFadeUp {
+          from {
+            opacity: 0;
+            filter: blur(20px);
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+          }
+        }
+        .animate-blur-fade-up {
+          opacity: 0;
+          animation: blurFadeUp 1s ease-out forwards;
+        }
+        .liquid-glass {
+          position: relative;
+          overflow: hidden;
+          background: rgba(255, 255, 255, 0.01);
+          background-blend-mode: luminosity;
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+          border: none;
+          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+        .liquid-glass::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          padding: 1.4px;
+          background: linear-gradient(
+            180deg,
+            rgba(255,255,255,0.45) 0%,
+            rgba(255,255,255,0.15) 20%,
+            rgba(255,255,255,0) 40%,
+            rgba(255,255,255,0) 60%,
+            rgba(255,255,255,0.15) 80%,
+            rgba(255,255,255,0.45) 100%
+          );
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+        }
+      `}</style>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight"
-          >
-            Create & Deploy<br />
-            <span className="bg-gradient-to-r from-accent-400 via-accent-500 to-accent-600 bg-clip-text text-transparent">AI Agents</span><br />
-            That Work Like a Team
-          </motion.h1>
+      {/* Background video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover z-0"
+      >
+        <source
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_094145_4a271a6c-3869-4f1c-8aa7-aeb0cb227994.mp4"
+          type="video/mp4"
+        />
+      </video>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-grey-400 text-lg sm:text-xl max-w-2xl mx-auto mb-8"
-          >
-            Text Agent <span className="text-grey-600">•</span> Voice Agent <span className="text-grey-600">•</span> Testing <span className="text-grey-600">•</span> Analytics <span className="text-grey-600">•</span> Media <span className="text-grey-600">•</span> Website
-          </motion.p>
+      {/* Bottom blur overlay — no dark gradient, only blur */}
+      <div
+        className="fixed inset-0 z-10 pointer-events-none"
+        style={{
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          maskImage: "linear-gradient(to top, black 0%, transparent 45%)",
+          WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 45%)",
+        }}
+      />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-            className="flex items-center justify-center gap-4"
-          >
-            <Link href="/agents" className="group relative px-8 py-3.5 rounded-lg bg-accent-600 text-white text-[11px] font-bold tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:bg-accent-500 animate-float">
-              <span className="relative z-10">Explore All Agents</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-            </Link>
-            <Link href="/demos" className="px-8 py-3.5 rounded-lg border border-white/10 text-grey-300 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-white/5 transition-all backdrop-blur-sm animate-float-delayed">
-              Try Demos
-            </Link>
-          </motion.div>
+      {/* Navbar */}
+      <nav className="relative z-50 flex items-center justify-between px-4 sm:px-6 md:px-12 py-4 md:py-6">
+        {/* Logo */}
+        <div
+          className="animate-blur-fade-up"
+          style={{ animationDelay: "0ms" }}
+        >
+          <span className="text-lg md:text-xl font-semibold tracking-tight">CINEMATIC</span>
         </div>
-      </section>
 
-      {/* Gradient Divider */}
-      <div className="h-px max-w-4xl mx-auto bg-gradient-to-r from-transparent via-accent-600/20 to-transparent" />
+        {/* Center nav links — desktop only */}
+        <div className="hidden lg:flex items-center gap-8">
+          {navLinks.map((link, i) => (
+            <a
+              key={link}
+              href="#"
+              className="animate-blur-fade-up text-sm hover:text-gray-300 transition-colors"
+              style={{ animationDelay: `${staggerNav[i]}ms` }}
+            >
+              {link}
+            </a>
+          ))}
+        </div>
 
-      {/* Stats */}
-      <AnimatedSection>
-        <section className="relative py-20 px-4">
-          <div className="absolute inset-0 bg-gradient-to-b from-accent-900/5 via-transparent to-transparent pointer-events-none" />
-          <div className="max-w-5xl mx-auto relative z-10">
-            <GlassCard className="p-8" floatDelay={0}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                {[
-                  { value: "6", label: "AI Agents" },
-                  { value: "50+", label: "Enterprise Clients" },
-                  { value: "99.9%", label: "Uptime" },
-                  { value: "24/7", label: "Support" },
-                ].map((s, i) => (
-                  <motion.div
-                    key={s.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 + i * 0.1 }}
-                    className="py-2"
-                  >
-                    <p className="text-3xl md:text-4xl font-bold bg-gradient-to-b from-accent-400 to-accent-600 bg-clip-text text-transparent">{s.value}</p>
-                    <p className="text-[11px] tracking-[0.15em] uppercase text-grey-500 mt-1">{s.label}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </GlassCard>
+        {/* Right side actions */}
+        <div className="flex items-center gap-3">
+          {/* Search — sm+ */}
+          <div
+            className="animate-blur-fade-up hidden sm:block"
+            style={{ animationDelay: "350ms" }}
+          >
+            <button className="liquid-glass rounded-full flex items-center gap-2 px-4 md:px-6 py-2 text-sm">
+              <Search size={18} />
+              <span className="hidden sm:inline">Search</span>
+            </button>
           </div>
-        </section>
-      </AnimatedSection>
 
-      {/* Gradient Divider */}
-      <div className="h-px max-w-4xl mx-auto bg-gradient-to-r from-transparent via-accent-600/20 to-transparent" />
+          {/* User — sm+ */}
+          <div
+            className="animate-blur-fade-up hidden sm:block"
+            style={{ animationDelay: "400ms" }}
+          >
+            <button className="liquid-glass w-10 h-10 rounded-full flex items-center justify-center">
+              <User size={18} />
+            </button>
+          </div>
 
-      {/* Technology + How It Works */}
-      <AnimatedSection>
-        <section className="relative py-28 px-4 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-accent-900/10 via-transparent to-transparent" />
-          <div className="max-w-4xl mx-auto relative z-10 text-center">
-            <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 mb-3">Our AI Technology</p>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Built on Advanced AI</h2>
-            <p className="text-grey-300 text-lg max-w-2xl mx-auto mb-16">
-              Powered by Google Gemini, Web Speech API, and Vapi telephony — our agents
-              understand Tanglish, respond naturally, and automate your business 24/7.
+          {/* Hamburger — below lg */}
+          <div
+            className="animate-blur-fade-up lg:hidden"
+            style={{ animationDelay: "350ms" }}
+          >
+            <button
+              onClick={toggleMobile}
+              className="liquid-glass w-10 h-10 rounded-full flex items-center justify-center relative"
+            >
+              <Menu
+                size={20}
+                className={`absolute transition-all duration-500 ease-out ${
+                  mobileOpen ? "rotate-180 opacity-0 scale-50" : "rotate-0 opacity-100 scale-100"
+                }`}
+              />
+              <X
+                size={20}
+                className={`absolute transition-all duration-500 ease-out ${
+                  mobileOpen ? "rotate-0 opacity-100 scale-100" : "-rotate-180 opacity-0 scale-50"
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      <div
+        className={`lg:hidden absolute top-[72px] left-0 right-0 z-40 transition-all duration-500 ease-out ${
+          mobileOpen
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-4 opacity-0 pointer-events-none"
+        }`}
+        style={{ backgroundColor: "rgba(17,17,17,0.95)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
+      >
+        <div className="border-t border-b border-gray-800 shadow-2xl px-4 py-4">
+          <div className="flex flex-col gap-1">
+            {navLinks.map((link, i) => (
+              <a
+                key={link}
+                href="#"
+                className="py-3 px-3 rounded-lg hover:bg-gray-800/50 transition-all duration-300 text-sm"
+                style={{
+                  animation: mobileOpen ? `slideIn 0.5s ease-out ${i * 50}ms forwards` : "none",
+                  opacity: mobileOpen ? 0 : 1,
+                  transform: mobileOpen ? "translateX(-12px)" : "none",
+                }}
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+          <div className="mt-4 pt-4 border-t border-gray-800 flex flex-col gap-3 sm:hidden">
+            <button className="liquid-glass rounded-full flex items-center gap-3 px-4 py-3 text-sm w-full justify-center">
+              <Search size={18} />
+              Search
+            </button>
+            <button className="liquid-glass rounded-full flex items-center gap-3 px-4 py-3 text-sm w-full justify-center">
+              <User size={18} />
+              Profile
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero content — bottom of viewport */}
+      <div className="relative z-10 flex-1 flex flex-col justify-end h-[calc(100vh-80px)] px-4 sm:px-6 md:px-12 pb-8 md:pb-16">
+        <div className="flex flex-col md:flex-row items-end gap-8">
+          {/* Left */}
+          <div className="flex-1 w-full">
+            {/* Metadata row */}
+            <div
+              className="animate-blur-fade-up flex flex-wrap items-center gap-3 sm:gap-6 mb-6 md:mb-8 text-xs sm:text-sm"
+              style={{ animationDelay: "300ms" }}
+            >
+              <span className="flex items-center gap-1.5 font-medium">
+                <Star size={16} className="fill-white sm:w-5 sm:h-5" />
+                8.7/10 IMDB
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock size={16} />
+                132 min
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Calendar size={16} />
+                April, 2025
+              </span>
+            </div>
+
+            {/* Title */}
+            <h1
+              className="animate-blur-fade-up text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter mb-4 md:mb-6"
+              style={{ animationDelay: "400ms", letterSpacing: "-0.04em" }}
+            >
+              Step Through. Work Smarter.
+            </h1>
+
+            {/* Description */}
+            <p
+              className="animate-blur-fade-up text-base sm:text-lg md:text-xl text-gray-400 mb-6 md:mb-12 max-w-2xl"
+              style={{ animationDelay: "500ms" }}
+            >
+              A voyage through forgotten realms, where past and future intertwine.
             </p>
-          </div>
-          <div className="max-w-[940px] mx-auto relative z-10">
-            <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 text-center mb-8">How It Works</p>
-            <div className="grid md:grid-cols-3 gap-6">
-              {steps.map((s, i) => (
-                <motion.div
-                  key={s.num}
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-60px" }}
-                  variants={fadeUp}
-                  className="text-center"
-                >
-                  <GlassCard className="p-8 h-full" floatDelay={i * 0.4}>
-                    <span className="text-4xl font-bold text-accent-600/30 block mb-4">{s.num}</span>
-                    <h3 className="text-lg font-bold mb-2">{s.title}</h3>
-                    <p className="text-sm text-grey-400 leading-relaxed">{s.desc}</p>
-                  </GlassCard>
-                </motion.div>
-              ))}
+
+            {/* CTA buttons */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+              <button
+                className="animate-blur-fade-up bg-white text-black rounded-full font-medium px-6 sm:px-8 py-2.5 sm:py-3 flex items-center gap-2 hover:bg-gray-200 transition-colors"
+                style={{ animationDelay: "600ms" }}
+              >
+                <Play size={18} fill="black" />
+                Watch Now
+              </button>
+              <button
+                className="animate-blur-fade-up liquid-glass rounded-full font-medium px-6 sm:px-8 py-2.5 sm:py-3"
+                style={{ animationDelay: "700ms" }}
+              >
+                Learn More
+              </button>
             </div>
           </div>
-        </section>
-      </AnimatedSection>
 
-      {/* Gradient Divider */}
-      <div className="h-px max-w-4xl mx-auto bg-gradient-to-r from-transparent via-accent-600/20 to-transparent" />
-
-      {/* Agents Preview */}
-      <AnimatedSection>
-        <section className="py-24 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 mb-3">The Agent Team</p>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">One Platform. Five AI Agents.</h2>
-              <p className="text-grey-400 text-lg max-w-2xl mx-auto">From customer conversations to content creation — all powered by AI with Tanglish support.</p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-6 max-w-[940px] mx-auto">
-              {agents.map((a, i) => (
-                <motion.div
-                  key={a.title}
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-40px" }}
-                  variants={fadeUp}
-                  className="w-full sm:w-[280px]"
-                >
-                  <Link href={a.href} className="group block h-full">
-                    <GlassCard className="p-8 h-full text-center" floatDelay={i * 0.35}>
-                      <span className="text-3xl block mb-4">{a.emoji}</span>
-                      <h3 className="text-base font-bold mb-1 group-hover:text-accent-400 transition-colors">{a.title}</h3>
-                      <p className="text-sm text-grey-400 leading-relaxed">{a.desc}</p>
-                    </GlassCard>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+          {/* Right — navigation arrows */}
+          <div className="flex md:flex-col md:w-auto gap-3 self-start md:self-end mt-4 md:mt-0">
+            <button
+              className="animate-blur-fade-up liquid-glass rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center gap-1"
+              style={{ animationDelay: "800ms" }}
+            >
+              <ChevronLeft size={18} />
+              <span className="hidden sm:inline">Previous</span>
+            </button>
+            <button
+              className="animate-blur-fade-up liquid-glass rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center gap-1"
+              style={{ animationDelay: "900ms" }}
+            >
+              <span className="hidden sm:inline">Next</span>
+              <ChevronRight size={18} />
+            </button>
           </div>
-        </section>
-      </AnimatedSection>
+        </div>
+      </div>
 
-      {/* Gradient Divider */}
-      <div className="h-px max-w-4xl mx-auto bg-gradient-to-r from-transparent via-accent-600/20 to-transparent" />
-
-      {/* CTA */}
-      <AnimatedSection>
-        <section className="py-24 px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <GlassCard className="p-10 md:p-14" floatDelay={0.2}>
-              <p className="text-[11px] tracking-[0.2em] uppercase text-accent-400 mb-4">14-Day Free Trial</p>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
-              <p className="text-grey-400 mb-8 max-w-lg mx-auto">
-                Deploy AI agents that automate sales, support, marketing, and analytics — all with natural Tanglish conversation.
-              </p>
-              <div className="flex items-center justify-center gap-4">
-                <Link href="/contact" className="group relative px-8 py-3.5 rounded-lg bg-accent-600 text-white text-[11px] font-bold tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:bg-accent-500 animate-float">
-                  <span className="relative z-10">Get Started Free</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                </Link>
-                <Link href="/pricing" className="px-8 py-3.5 rounded-lg border border-white/10 text-grey-300 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-white/5 transition-all backdrop-blur-sm animate-float-delayed">
-                  View Pricing
-                </Link>
-              </div>
-            </GlassCard>
-          </div>
-        </section>
-      </AnimatedSection>
-    </>
+      <style jsx>{`
+        @keyframes slideIn {
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
+    </div>
   );
 }

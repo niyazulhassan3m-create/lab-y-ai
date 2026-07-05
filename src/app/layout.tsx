@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Sora } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Chatbot from "@/components/Chatbot";
-import ParticlesBackground from "@/components/ParticlesBackground";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-sans",
@@ -42,11 +38,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/ef8a59c146027de56b9f1646a6c36ce0?family=Cassannet+Plus" />
       </head>
       <body className="min-h-full flex flex-col">
-        <ParticlesBackground />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <Chatbot />
+        {children}
       </body>
     </html>
   );

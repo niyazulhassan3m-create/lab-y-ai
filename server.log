@@ -2,130 +2,176 @@
 - Local:         http://localhost:3007
 - Network:       http://192.168.1.7:3007
 - Environments: .env.local
-✓ Ready in 4.4s
+✓ Ready in 1300ms
 
 ○ Compiling / ...
- GET / 200 in 702ms (next.js: 11ms, application-code: 692ms)
-○ Compiling /cinematic ...
- GET /cinematic 200 in 382ms (next.js: 146ms, application-code: 236ms)
- GET / 200 in 1069ms (next.js: 409ms, application-code: 660ms)
-[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
-✓ Compiled in 959ms
- GET / 200 in 401ms (next.js: 286ms, application-code: 115ms)
- GET /cinematic 200 in 602ms (next.js: 78ms, application-code: 523ms)
- GET / 200 in 833ms (next.js: 15ms, application-code: 818ms)
-[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
- GET / 200 in 304ms (next.js: 12ms, application-code: 292ms)
-[browser] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.
- GET / 200 in 797ms (next.js: 468ms, application-code: 329ms)
- GET / 200 in 369ms (next.js: 235ms, application-code: 134ms)
- GET / 200 in 302ms (next.js: 197ms, application-code: 105ms)
-✓ Compiled in 1161ms
- GET / 200 in 573ms (next.js: 305ms, application-code: 268ms)
- GET / 200 in 539ms (next.js: 72ms, application-code: 467ms)
- GET / 200 in 472ms (next.js: 19ms, application-code: 453ms)
- GET / 200 in 371ms (next.js: 18ms, application-code: 353ms)
- GET / 200 in 371ms (next.js: 81ms, application-code: 289ms)
- GET / 200 in 461ms (next.js: 144ms, application-code: 317ms)
- GET / 200 in 274ms (next.js: 22ms, application-code: 252ms)
- GET / 200 in 430ms (next.js: 14ms, application-code: 416ms)
- GET / 200 in 537ms (next.js: 19ms, application-code: 518ms)
- GET / 200 in 452ms (next.js: 20ms, application-code: 432ms)
- GET / 200 in 529ms (next.js: 84ms, application-code: 445ms)
- GET / 200 in 395ms (next.js: 33ms, application-code: 362ms)
- GET / 200 in 467ms (next.js: 90ms, application-code: 377ms)
- GET / 200 in 658ms (next.js: 18ms, application-code: 640ms)
- GET / 200 in 664ms (next.js: 17ms, application-code: 647ms)
- GET / 200 in 666ms (next.js: 24ms, application-code: 642ms)
- GET / 200 in 684ms (next.js: 65ms, application-code: 619ms)
- GET / 200 in 462ms (next.js: 31ms, application-code: 431ms)
- GET / 200 in 539ms (next.js: 121ms, application-code: 418ms)
- GET / 200 in 1173ms (next.js: 25ms, application-code: 1148ms)
-✓ Compiled in 0ms
- GET / 200 in 1700ms (next.js: 19ms, application-code: 1681ms)
- GET / 200 in 1785ms (next.js: 20ms, application-code: 1765ms)
- GET / 200 in 1787ms (next.js: 48ms, application-code: 1739ms)
- GET / 200 in 1791ms (next.js: 241ms, application-code: 1549ms)
- GET / 200 in 1533ms (next.js: 914ms, application-code: 619ms)
- GET / 200 in 581ms (next.js: 17ms, application-code: 564ms)
- GET / 200 in 542ms (next.js: 28ms, application-code: 514ms)
- GET / 200 in 422ms (next.js: 31ms, application-code: 392ms)
- GET / 200 in 431ms (next.js: 32ms, application-code: 399ms)
- GET / 200 in 426ms (next.js: 82ms, application-code: 344ms)
- GET / 200 in 384ms (next.js: 18ms, application-code: 366ms)
- GET / 200 in 484ms (next.js: 18ms, application-code: 465ms)
- GET / 200 in 468ms (next.js: 17ms, application-code: 450ms)
- GET / 200 in 365ms (next.js: 19ms, application-code: 346ms)
- GET / 200 in 269ms (next.js: 18ms, application-code: 252ms)
- GET / 200 in 269ms (next.js: 97ms, application-code: 172ms)
- GET / 200 in 87ms (next.js: 14ms, application-code: 74ms)
- GET / 200 in 392ms (next.js: 302ms, application-code: 90ms)
- GET / 200 in 865ms (next.js: 546ms, application-code: 319ms)
-✓ Compiled in 965ms
- GET / 200 in 1420ms (next.js: 625ms, application-code: 794ms)
- GET / 200 in 294ms (next.js: 84ms, application-code: 209ms)
- GET / 200 in 851ms (next.js: 22ms, application-code: 828ms)
- GET / 200 in 917ms (next.js: 34ms, application-code: 883ms)
- GET / 200 in 701ms (next.js: 21ms, application-code: 680ms)
- GET / 200 in 701ms (next.js: 190ms, application-code: 512ms)
- GET / 200 in 700ms (next.js: 330ms, application-code: 370ms)
- GET / 200 in 711ms (next.js: 463ms, application-code: 248ms)
- GET / 200 in 537ms (next.js: 16ms, application-code: 520ms)
- GET / 200 in 936ms (next.js: 27ms, application-code: 909ms)
- GET / 200 in 943ms (next.js: 144ms, application-code: 799ms)
- GET / 200 in 941ms (next.js: 255ms, application-code: 686ms)
- GET / 200 in 715ms (next.js: 157ms, application-code: 558ms)
- GET / 200 in 753ms (next.js: 69ms, application-code: 685ms)
- GET / 200 in 762ms (next.js: 231ms, application-code: 532ms)
- GET / 200 in 836ms (next.js: 20ms, application-code: 816ms)
- GET / 200 in 837ms (next.js: 169ms, application-code: 668ms)
- GET / 200 in 554ms (next.js: 32ms, application-code: 522ms)
- GET / 200 in 718ms (next.js: 16ms, application-code: 702ms)
- GET / 200 in 842ms (next.js: 17ms, application-code: 825ms)
- GET / 200 in 841ms (next.js: 132ms, application-code: 709ms)
- GET / 200 in 876ms (next.js: 26ms, application-code: 849ms)
- GET / 200 in 869ms (next.js: 120ms, application-code: 749ms)
- GET / 200 in 834ms (next.js: 113ms, application-code: 721ms)
- GET / 200 in 761ms (next.js: 151ms, application-code: 611ms)
- GET / 200 in 786ms (next.js: 18ms, application-code: 768ms)
- GET / 200 in 793ms (next.js: 117ms, application-code: 676ms)
- GET / 200 in 773ms (next.js: 19ms, application-code: 754ms)
- GET / 200 in 780ms (next.js: 130ms, application-code: 651ms)
- GET / 200 in 848ms (next.js: 19ms, application-code: 829ms)
- GET / 200 in 848ms (next.js: 164ms, application-code: 684ms)
- GET / 200 in 830ms (next.js: 29ms, application-code: 801ms)
- GET / 200 in 822ms (next.js: 123ms, application-code: 699ms)
- GET / 200 in 684ms (next.js: 31ms, application-code: 653ms)
- GET / 200 in 680ms (next.js: 125ms, application-code: 555ms)
- GET / 200 in 372ms (next.js: 19ms, application-code: 352ms)
- GET / 200 in 380ms (next.js: 146ms, application-code: 234ms)
- GET / 200 in 122ms (next.js: 18ms, application-code: 103ms)
-✓ Compiled in 192ms
- GET / 200 in 996ms (next.js: 525ms, application-code: 470ms)
-✓ Compiled in 253ms
- GET / 200 in 864ms (next.js: 634ms, application-code: 230ms)
- GET / 200 in 120ms (next.js: 16ms, application-code: 104ms)
-✓ Compiled in 605ms
- GET / 200 in 1933ms (next.js: 664ms, application-code: 1269ms)
- GET / 200 in 829ms (next.js: 213ms, application-code: 615ms)
- GET / 200 in 868ms (next.js: 37ms, application-code: 831ms)
- GET / 200 in 382ms (next.js: 215ms, application-code: 167ms)
- GET / 200 in 338ms (next.js: 202ms, application-code: 136ms)
- GET / 200 in 292ms (next.js: 202ms, application-code: 90ms)
- GET / 200 in 434ms (next.js: 257ms, application-code: 177ms)
- GET / 200 in 419ms (next.js: 307ms, application-code: 111ms)
- GET / 200 in 285ms (next.js: 185ms, application-code: 100ms)
- GET / 200 in 309ms (next.js: 207ms, application-code: 102ms)
- GET / 200 in 345ms (next.js: 244ms, application-code: 102ms)
- GET / 200 in 721ms (next.js: 440ms, application-code: 281ms)
- GET / 200 in 335ms (next.js: 199ms, application-code: 136ms)
- GET / 200 in 303ms (next.js: 206ms, application-code: 97ms)
- GET / 200 in 605ms (next.js: 432ms, application-code: 172ms)
- GET / 200 in 320ms (next.js: 188ms, application-code: 133ms)
- GET / 200 in 306ms (next.js: 190ms, application-code: 116ms)
- GET / 200 in 521ms (next.js: 388ms, application-code: 133ms)
-✓ Compiled in 758ms
-✓ Compiled in 284ms
-✓ Compiled in 194ms
-✓ Compiled in 953ms
-✓ Compiled in 847ms
+ GET / 200 in 9.1s (next.js: 8.1s, application-code: 926ms)
+ GET / 200 in 161ms (next.js: 13ms, application-code: 148ms)
+Invalid DOM property `stop-color`. Did you mean `stopColor`?
+Invalid DOM property `stop-opacity`. Did you mean `stopOpacity`?
+Invalid DOM property `stroke-width`. Did you mean `strokeWidth`?
+Invalid DOM property `stroke-linecap`. Did you mean `strokeLinecap`?
+Invalid DOM property `stroke-linejoin`. Did you mean `strokeLinejoin`?
+Invalid DOM property `font-family`. Did you mean `fontFamily`?
+Invalid DOM property `font-size`. Did you mean `fontSize`?
+Invalid DOM property `font-weight`. Did you mean `fontWeight`?
+Invalid DOM property `letter-spacing`. Did you mean `letterSpacing`?
+ GET /services 200 in 2.7s (next.js: 2.2s, application-code: 545ms)
+ GET /agents 200 in 1991ms (next.js: 1559ms, application-code: 431ms)
+ GET / 200 in 254ms (next.js: 39ms, application-code: 215ms)
+ GET /agents 200 in 386ms (next.js: 19ms, application-code: 367ms)
+[browser] In HTML, <a> cannot be a descendant of <a>.
+This will cause a hydration error.
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/agents" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/agents" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="layout" pagePath="(site)/lay...">
+                <SegmentTrieNode>
+                <script>
+                <script>
+                <script>
+                <SiteLayout>
+                  <ParticlesBackground>
+                  <Header>
+                    <header className="fixed top-...">
+                      <nav className="max-w-6xl ...">
+                        <LinkComponent href="/" className="flex items...">
+>                         <a
+>                           className="flex items-center"
+>                           ref={function}
+>                           onClick={function onClick}
+>                           onMouseEnter={function onMouseEnter}
+>                           onTouchStart={function onTouchStart}
+>                           href="/"
+>                         >
+                            <Logo className="h-16 w-auto">
+                              <LinkComponent href="/" className={"flex ite..."}>
+>                               <a
+>                                 className={"flex items-center "}
+>                                 ref={function}
+>                                 onClick={function onClick}
+>                                 onMouseEnter={function onMouseEnter}
+>                                 onTouchStart={function onTouchStart}
+>                                 href="/"
+>                               >
+                        ...
+                  ...
+            ...
+ 
+[browser] <a> cannot contain a nested <a>.
+See this log for the ancestor stack trace. 
+[browser] Invalid DOM property `stop-color`. Did you mean `stopColor`? 
+[browser] Invalid DOM property `stop-opacity`. Did you mean `stopOpacity`? 
+[browser] Invalid DOM property `stroke-width`. Did you mean `strokeWidth`? 
+[browser] Invalid DOM property `stroke-linecap`. Did you mean `strokeLinecap`? 
+[browser] Invalid DOM property `stroke-linejoin`. Did you mean `strokeLinejoin`? 
+[browser] Invalid DOM property `font-family`. Did you mean `fontFamily`? 
+[browser] Invalid DOM property `font-size`. Did you mean `fontSize`? 
+[browser] Invalid DOM property `font-weight`. Did you mean `fontWeight`? 
+[browser] Invalid DOM property `letter-spacing`. Did you mean `letterSpacing`? 
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at a (<anonymous>)
+    at Logo (src/components/Logo.tsx:5:5)
+    at Header (src/components/Header.tsx:25:11)
+    at SiteLayout (src\app\(site)\layout.tsx:27:7)
+  3 | export default function Logo({ className = "h-16 w-auto" }: { className?: string }) {
+  4 |   return (
+> 5 |     <Link href="/" className={`flex items-center ${className.includes("h-") ? "" : "h-16"}`}>
+    |     ^
+  6 |       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 140" fill="none" className={...
+  7 |         <defs>
+  8 |           <linearGradient id="lb1" x1="0%" y1="0%" x2="100%" y2="100%">
+ GET / 200 in 82ms (next.js: 13ms, application-code: 69ms)
+ GET /agents 200 in 382ms (next.js: 9ms, application-code: 372ms)
+[browser] In HTML, <a> cannot be a descendant of <a>.
+This will cause a hydration error.
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/agents" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/agents" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="layout" pagePath="(site)/lay...">
+                <SegmentTrieNode>
+                <script>
+                <script>
+                <script>
+                <SiteLayout>
+                  <ParticlesBackground>
+                  <Header>
+                    <header className="fixed top-...">
+                      <nav className="max-w-6xl ...">
+                        <LinkComponent href="/" className="flex items...">
+>                         <a
+>                           className="flex items-center"
+>                           ref={function}
+>                           onClick={function onClick}
+>                           onMouseEnter={function onMouseEnter}
+>                           onTouchStart={function onTouchStart}
+>                           href="/"
+>                         >
+                            <Logo className="h-16 w-auto">
+                              <LinkComponent href="/" className={"flex ite..."}>
+>                               <a
+>                                 className={"flex items-center "}
+>                                 ref={function}
+>                                 onClick={function onClick}
+>                                 onMouseEnter={function onMouseEnter}
+>                                 onTouchStart={function onTouchStart}
+>                                 href="/"
+>                               >
+                        ...
+                  ...
+            ...
+ 
+[browser] <a> cannot contain a nested <a>.
+See this log for the ancestor stack trace. 
+[browser] Invalid DOM property `stop-color`. Did you mean `stopColor`? 
+[browser] Invalid DOM property `stop-opacity`. Did you mean `stopOpacity`? 
+[browser] Invalid DOM property `stroke-width`. Did you mean `strokeWidth`? 
+[browser] Invalid DOM property `stroke-linecap`. Did you mean `strokeLinecap`? 
+[browser] Invalid DOM property `stroke-linejoin`. Did you mean `strokeLinejoin`? 
+[browser] Invalid DOM property `font-family`. Did you mean `fontFamily`? 
+[browser] Invalid DOM property `font-size`. Did you mean `fontSize`? 
+[browser] Invalid DOM property `font-weight`. Did you mean `fontWeight`? 
+[browser] Invalid DOM property `letter-spacing`. Did you mean `letterSpacing`? 
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at a (<anonymous>)
+    at Logo (src/components/Logo.tsx:5:5)
+    at Header (src/components/Header.tsx:25:11)
+    at SiteLayout (src\app\(site)\layout.tsx:27:7)
+  3 | export default function Logo({ className = "h-16 w-auto" }: { className?: string }) {
+  4 |   return (
+> 5 |     <Link href="/" className={`flex items-center ${className.includes("h-") ? "" : "h-16"}`}>
+    |     ^
+  6 |       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 140" fill="none" className={...
+  7 |         <defs>
+  8 |           <linearGradient id="lb1" x1="0%" y1="0%" x2="100%" y2="100%">
+ GET /services 200 in 144ms (next.js: 15ms, application-code: 129ms)
