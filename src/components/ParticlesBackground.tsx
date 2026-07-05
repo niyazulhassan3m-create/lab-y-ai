@@ -1,18 +1,6 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
-
-interface Dot {
-  size: number;
-  brightness: number;
-}
-
-interface HelixPair {
-  t: number;
-  speed: number;
-  a: Dot;
-  b: Dot;
-}
 
 export default function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -24,95 +12,102 @@ export default function ParticlesBackground() {
     if (!ctx) return;
 
     let animId: number;
-    let W = window.innerWidth;
-    let H = window.innerHeight;
-    canvas.width = W;
-    canvas.height = H;
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
 
-    const cx = W / 2;
-    const R = Math.min(W, H) * 0.13;
-    const helixSpan = H * 0.85;
-    const count = 30;
+    const count = Math.min(70, Math.floor((w * h) / 18000));
 
-    const pairs: HelixPair[] = Array.from({ length: count }, (_, i) => ({
-      t: i / count,
-      speed: 0.15 + Math.random() * 0.05,
-      a: { size: 1.2 + Math.random() * 1.8, brightness: 0.3 + Math.random() * 0.5 },
-      b: { size: 1.2 + Math.random() * 1.8, brightness: 0.3 + Math.random() * 0.5 },
-    }));
+    const palette = [
+      { r: 200, g: 74, b: 74 },
+      { r: 155, g: 45, b: 62 },
+      { r: 224, g: 112, b: 112 },
+      { r: 123, g: 30, b: 45 },
+    ];
 
-    let angle = 0;
-
-    const toY = (t: number) => (H - helixSpan) / 2 + t * helixSpan;
-    const toPos = (t: number, phase: number) => {
-      const theta = t * Math.PI * 4 + phase + angle;
+    const particles = Array.from({ length: count }, () => {
+      const c = palette[Math.floor(Math.random() * palette.length)];
       return {
-        x: cx + Math.cos(theta) * R,
-        z: Math.sin(theta) * R,
-        y: toY(t),
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: -(Math.random() * 0.25 + 0.08),
+        r: Math.random() * 2.5 + 1,
+        baseA: Math.random() * 0.5 + 0.25,
+        phase: Math.random() * Math.PI * 2,
+        pulseSpeed: Math.random() * 0.02 + 0.008,
+        color: c,
+        trail: [] as { x: number; y: number; a: number }[],
       };
-    };
+    });
 
     const draw = () => {
-      ctx.clearRect(0, 0, W, H);
+      ctx.clearRect(0, 0, w, h);
 
-      const active = pairs.filter((p) => p.t > 0.001 && p.t < 0.999);
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
 
-      for (const pair of active) {
-        for (const phase of [0, Math.PI] as const) {
-          const dot = phase === 0 ? pair.a : pair.b;
-          const pos = toPos(pair.t, phase);
-          const depthNorm = (pos.z / R + 1) / 2;
-          const depthAlpha = 0.25 + depthNorm * 0.55;
-          const scale = 0.5 + depthNorm * 0.5;
-
-          ctx.beginPath();
-          ctx.arc(pos.x, pos.y, dot.size * scale, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(200, 74, 74, ${dot.brightness * depthAlpha * 0.5})`;
-          ctx.fill();
-
-          ctx.beginPath();
-          ctx.arc(pos.x, pos.y, dot.size * scale * 0.4, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(240, 160, 160, ${dot.brightness * depthAlpha * 0.3})`;
-          ctx.fill();
+        if (p.x < -10) p.x = w + 10;
+        if (p.x > w + 10) p.x = -10;
+        if (p.y < -10) {
+          p.y = h + 10;
+          p.x = Math.random() * w;
         }
-      }
 
-      for (const pair of active) {
-        const posA = toPos(pair.t, 0);
-        const posB = toPos(pair.t, Math.PI);
-        const depthA = (posA.z / R + 1) / 2;
-        const depthB = (posB.z / R + 1) / 2;
-        const depthAvg = (depthA + depthB) / 2;
+        p.trail.unshift({ x: p.x, y: p.y, a: 1 });
+        if (p.trail.length > 8) p.trail.pop();
+
+        for (let i = 0; i < p.trail.length; i++) {
+          const t = p.trail[i];
+          const frac = 1 - i / p.trail.length;
+          t.a = frac * frac * p.baseA * 0.4;
+        }
+
+        p.phase += p.pulseSpeed;
+        const pulse = Math.sin(p.phase) * 0.35 + 0.65;
+        const alpha = p.baseA * pulse;
+
+        for (let i = 1; i < p.trail.length; i++) {
+          const t = p.trail[i];
+          const prev = p.trail[i - 1];
+          ctx.beginPath();
+          ctx.moveTo(prev.x, prev.y);
+          ctx.lineTo(t.x, t.y);
+          ctx.strokeStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${t.a * 0.5})`;
+          ctx.lineWidth = p.r * 0.6;
+          ctx.stroke();
+        }
+
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
+        grad.addColorStop(0, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha * 0.35})`);
+        grad.addColorStop(1, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0)`);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
 
         ctx.beginPath();
-        ctx.moveTo(posA.x, posA.y);
-        ctx.lineTo(posB.x, posB.y);
-        ctx.strokeStyle = `rgba(200, 74, 74, ${0.04 + depthAvg * 0.08})`;
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-      }
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha})`;
+        ctx.fill();
 
-      angle += 0.004;
-      for (const p of pairs) {
-        p.t += p.speed * 0.002;
-        if (p.t > 1) {
-          p.t -= 1;
-          p.a = { size: 1.2 + Math.random() * 1.8, brightness: 0.3 + Math.random() * 0.5 };
-          p.b = { size: 1.2 + Math.random() * 1.8, brightness: 0.3 + Math.random() * 0.5 };
-        }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 0.4, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.3})`;
+        ctx.fill();
       }
 
       animId = requestAnimationFrame(draw);
     };
-
     draw();
 
     const onResize = () => {
-      W = window.innerWidth;
-      H = window.innerHeight;
-      canvas.width = W;
-      canvas.height = H;
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
     };
     window.addEventListener("resize", onResize);
     return () => {
@@ -125,7 +120,6 @@ export default function ParticlesBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
     />
   );
 }
