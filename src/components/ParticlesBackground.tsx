@@ -17,17 +17,6 @@ export default function ParticlesBackground() {
     canvas.width = w;
     canvas.height = h;
 
-    const mouse = { x: w / 2, y: h / 2, active: false };
-
-    const onMouse = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-      mouse.active = true;
-    };
-    const onLeave = () => { mouse.active = false; };
-    window.addEventListener("mousemove", onMouse);
-    window.addEventListener("mouseleave", onLeave);
-
     const count = Math.min(70, Math.floor((w * h) / 18000));
 
     const palette = [
@@ -57,17 +46,6 @@ export default function ParticlesBackground() {
       ctx.clearRect(0, 0, w, h);
 
       for (const p of particles) {
-        if (mouse.active) {
-          const dx = mouse.x - p.x;
-          const dy = mouse.y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist > 1 && dist < 400) {
-            const force = 0.0008 * (400 - dist);
-            p.vx += (dx / dist) * force;
-            p.vy += (dy / dist) * force;
-          }
-        }
-
         p.vx += (Math.random() - 0.5) * 0.02;
         p.vy += (Math.random() - 0.5) * 0.01;
 
@@ -145,8 +123,6 @@ export default function ParticlesBackground() {
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", onResize);
-      window.removeEventListener("mousemove", onMouse);
-      window.removeEventListener("mouseleave", onLeave);
     };
   }, []);
 
