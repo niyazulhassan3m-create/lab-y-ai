@@ -40,7 +40,7 @@ export default function Logo({ className = "h-16 w-auto" }: { className?: string
         </g>
         <text x="142" y="62" font-size="44" font-weight="700" fill="#f5f5f5" letter-spacing="3.5" className="logo-heading">Zi</text>
         <text x="200" y="66" font-size="48" font-weight="800" fill="url(#zx1)" letter-spacing="4" className="logo-heading">X</text>
-        <text x="142" y="94" font-family="'Space Grotesk','Inter',sans-serif" font-size="11.5" fill="#777" letter-spacing="7.5" font-weight="500">AI SOLUTIONS</text>
+        <text x="142" y="94" font-family="'Space Grotesk','Inter',sans-serif" font-size="11.5" fill="#777" letter-spacing="7.5" font-weight="500">INNOVATION INTELLIGENCE</text>
         <line x1="142" y1="111" x2="322" y2="111" stroke="url(#zx1)" stroke-width="1" opacity="0.15"/>
       </svg>
     </Link>
