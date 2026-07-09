@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5">
           <p className="text-[11px] text-grey-600">
-            &copy; {new Date().getFullYear()} Lab Y AI Solutions. All rights reserved.
+            &copy; {new Date().getFullYear()} ZiX AI Solutions. All rights reserved.
           </p>
           <div className="flex items-center gap-5 text-[11px] text-grey-600">
             <span className="hover:text-accent-400 transition-colors cursor-pointer">hello@lab-y.ai</span>

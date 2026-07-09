@@ -121,7 +121,7 @@ export default function VoiceAgent() {
         else if (q.includes("service") || q.includes("product")) reply = "6 AI Services: Text, Voice, Testing, Analytics, Media, Website Developing. Entha service pathi ketunga!";
         else if (q.includes("website") || q.includes("site") || q.includes("web")) reply = "Website Developing — naama ungaluku custom AI-integrated website build panni kuduppom. Unga business requirements describe panna, full site AI features with modern design la deliver pannuvom!";
         else if (q.includes("hi") || q.includes("vanakkam") || q.includes("hello")) reply = "Vanakkam! Naan Yara. Products, pricing, demo — edhavadhu ketunga!";
-        else reply = "Vanakkam! Naan Yara. Lab Y AI Solutions la AI agent. Products, pricing, demo — edhavadhu specifically ketunga!";
+        else reply = "Vanakkam! Naan Yara. ZiX AI Solutions la AI agent. Products, pricing, demo — edhavadhu specifically ketunga!";
       }
       setChat((prev) => [...prev, { role: "ai", text: reply }]);
       setThinking(false);
@@ -364,7 +364,7 @@ export default function VoiceAgent() {
               <div className="max-h-[300px] overflow-y-auto space-y-3 mb-4">
                 {chat.length === 0 && (
                   <div className="text-center py-8">
-                    <p className="text-grey-500 text-sm">Ask me anything about Lab Y in Tanglish!</p>
+                    <p className="text-grey-500 text-sm">Ask me anything about ZiX in Tanglish!</p>
                     <p className="text-grey-600 text-xs mt-1">Try: "Unga AI voice agent pathi sollunga"</p>
                   </div>
                 )}

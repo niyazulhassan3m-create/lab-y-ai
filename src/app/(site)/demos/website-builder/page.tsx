@@ -130,7 +130,7 @@ export default function WebsiteBuilderDemo() {
               type="text"
               value={business}
               onChange={(e) => setBusiness(e.target.value)}
-              placeholder="e.g., Lab Y AI Solutions"
+              placeholder="e.g., ZiX AI Solutions"
               className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-grey-600 focus:outline-none focus:border-accent-600/50 transition-all text-center text-lg"
             />
             <button

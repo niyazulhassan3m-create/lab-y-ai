@@ -5,7 +5,7 @@ import Link from "next/link";
 
 function fallbackReply(msg: string): string {
   const q = msg.toLowerCase();
-  if (q.includes("hi") || q.includes("vanakkam") || q.includes("hello") || q.includes("hey")) return "Vanakkam! Naan Yara, Lab Y AI Solutions la AI agent. Ungaluku eppadi help pannanum? Products, pricing, demo — edhavadhu ketunga!";
+  if (q.includes("hi") || q.includes("vanakkam") || q.includes("hello") || q.includes("hey")) return "Vanakkam! Naan Yara, ZiX AI Solutions la AI agent. Ungaluku eppadi help pannanum? Products, pricing, demo — edhavadhu ketunga!";
   if (q.includes("pric") || q.includes("cost") || q.includes("rate") || q.includes("vila") || q.includes("fee")) return "Our pricing: Starter ₹2,100/mo, Growth ₹4,200/mo, Professional ₹8,400/mo. Enterprise plan custom. 14-day free trial available!";
   if (q.includes("demo") || q.includes("book") || q.includes("meeting")) return "Sure! Demo book panna lab-y-ai.vercel.app/contact ku ponga. Atho illa namma sales team ping pannala?";
   if (q.includes("service") || q.includes("product") || q.includes("offer") || q.includes("enna") || q.includes("solution")) return "We have 6 AI Services:\n🔹 Text Agent — Chatbots for websites & social media\n🔹 Voice Agent — Real phone calls in Tanglish\n🔹 Testing Agent — Automated QA\n🔹 Analytics Agent — Call insights & sentiment\n🔹 Media Agent — AI content generation\n🔹 AI Integrated Website Developing — Custom websites with AI features\n\nEthula ungaluku interest?";
@@ -25,7 +25,7 @@ const GEMINI_OK = !!process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
 export default function TextAgentPage() {
   const [messages, setMessages] = useState<{ role: "user" | "ai"; text: string }[]>(
-    GEMINI_OK ? [] : [{ role: "ai", text: "Vanakkam! Naan Yara, Lab Y AI Solutions la AI agent. Ungaluku eppadi help pannanum?" }]
+    GEMINI_OK ? [] : [{ role: "ai", text: "Vanakkam! Naan Yara, ZiX AI Solutions la AI agent. Ungaluku eppadi help pannanum?" }]
   );
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);

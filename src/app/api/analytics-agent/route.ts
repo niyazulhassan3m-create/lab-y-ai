@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const SYSTEM_PROMPT = `You are an Analytics AI Agent for Lab Y AI Solutions. You answer questions about call analytics and provide data-driven insights.
+const SYSTEM_PROMPT = `You are an Analytics AI Agent for ZiX AI Solutions. You answer questions about call analytics and provide data-driven insights.
 
 CRITICAL RULES:
 - Respond in Tanglish (Tamil + English mix written in Roman script)
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
 
     const contents = [
       { role: "user", parts: [{ text: SYSTEM_PROMPT }] },
-      { role: "model", parts: [{ text: "Understood. I am the Analytics Agent for Lab Y AI Solutions. I will provide data-driven insights in Tanglish." }] },
+      { role: "model", parts: [{ text: "Understood. I am the Analytics Agent for ZiX AI Solutions. I will provide data-driven insights in Tanglish." }] },
       { role: "user", parts: [{ text: message }] },
     ];
 

@@ -65,32 +65,32 @@ const MALE_EXPRESSION = {
 };
 
 const GREETINGS = [
-  "Vanakkam! Lab Y AI Solutions ku welcome! Unga per enna?",
-  "Vanakkam! Lab Y AI Solutions la Yara pesuren. Eppadi help pannanum?",
+  "Vanakkam! ZiX AI Solutions ku welcome! Unga per enna?",
+  "Vanakkam! ZiX AI Solutions la Yara pesuren. Eppadi help pannanum?",
   "Vanakkam! Products pathi therinjukkalam. Edutha question ketunga!",
 ];
 
 const MALE_GREETINGS = [
-  "Vanakkam! Lab Y AI Solutions ku welcome! Naan Arjun. Ungaluku eppadi help pannanum?",
+  "Vanakkam! ZiX AI Solutions ku welcome! Naan Arjun. Ungaluku eppadi help pannanum?",
   "Vanakkam! Naan Arjun. Products, pricing, demo pathi kekalam.",
   "Vanakkam! Edutha question ketunga. Ungaluku help panna ready!",
 ];
 
 const RESPONSES: Record<string, string> = {
   hi: "Vanakkam! Yara pesuren. Ungaluku eppadi help pannanum?",
-  hello: "Vanakkam! Lab Y AI Solutions ku welcome!",
-  "unga per enna": "Naan Yara! Lab Y AI Solutions la AI voice agent.",
+  hello: "Vanakkam! ZiX AI Solutions ku welcome!",
+  "unga per enna": "Naan Yara! ZiX AI Solutions la AI voice agent.",
   product: "We have 5 AI agents: Text, Voice, Testing, Analytics, Media.",
   pricing: "Starter ₹2,100/mo, Growth ₹4,200/mo, Professional ₹8,400/mo.",
   demo: "Sure! Contact page la details kudunga, demo arrange pannurom.",
   thanks: "Romba nandri! Ungaluku help panna mudinjadhu santhosham!",
-  bye: "Goodbye! Lab Y team ku ungal support romba mukkiyam!",
+  bye: "Goodbye! ZiX team ku ungal support romba mukkiyam!",
 };
 
 const MALE_RESPONSES: Record<string, string> = {
   hi: "Vanakkam! Naan Arjun. Ungaluku eppadi help pannanum?",
-  hello: "Vanakkam! Lab Y AI Solutions ku welcome! Naan Arjun.",
-  "unga per enna": "Naan Arjun! Lab Y AI Solutions la AI avatar agent.",
+  hello: "Vanakkam! ZiX AI Solutions ku welcome! Naan Arjun.",
+  "unga per enna": "Naan Arjun! ZiX AI Solutions la AI avatar agent.",
   product: "We have 5 AI agents: Text, Voice, Testing, Analytics, Media.",
   pricing: "Starter ₹2,100/mo, Growth ₹4,200/mo, Professional ₹8,400/mo.",
   demo: "Sure! Contact page la details kudunga, demo arrange pannurom.",

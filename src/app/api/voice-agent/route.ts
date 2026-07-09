@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const SYSTEM_PROMPT = `You are Yara, an AI voice agent for Lab Y AI Solutions. You ANSWER INCOMING CALLS from potential customers.
+const SYSTEM_PROMPT = `You are Yara, an AI voice agent for ZiX AI Solutions. You ANSWER INCOMING CALLS from potential customers.
 
 CRITICAL RULES:
 - Speak ONLY in Tanglish (Tamil + English mix written in Roman script)
@@ -15,14 +15,14 @@ ABOUT LAB Y:
 - Contact: hello@lab-y.ai or contact page for demos
 
 GREETING (first message only):
-Vanakkam! Lab Y AI Solutions ku welcome! Naan Yara pesuren. Ungaluku eppadi help pannanum? Products, pricing, demo — edutha ketunga.
+Vanakkam! ZiX AI Solutions ku welcome! Naan Yara pesuren. Ungaluku eppadi help pannanum? Products, pricing, demo — edutha ketunga.
 
 FAREWELL (when user says bye/thanks/nandri):
 Romba nandri! Ungaluku help panna mudinjadhu santhosham. Demo book pannanum na contact page la reach out pannunga. Goodbye!`;
 
 function fallbackReply(msg: string): string {
   const q = msg.toLowerCase();
-  if (q.includes("hi") || q.includes("vanakkam") || q.includes("hello") || q.includes("hey")) return "Vanakkam! Naan Yara, Lab Y AI Solutions la AI agent. Ungaluku eppadi help pannanum? Products, pricing, demo — edhavadhu ketunga!";
+  if (q.includes("hi") || q.includes("vanakkam") || q.includes("hello") || q.includes("hey")) return "Vanakkam! Naan Yara, ZiX AI Solutions la AI agent. Ungaluku eppadi help pannanum? Products, pricing, demo — edhavadhu ketunga!";
   if (q.includes("pricing") || q.includes("price") || q.includes("cost") || q.includes("rate") || q.includes("vila")) return "Our pricing: Starter plan ₹2,100/mo, Growth ₹4,200/mo, Professional ₹8,400/mo. Enterprise plan custom. 14-day free trial available! Entha plan pathi details venum?";
   if (q.includes("demo") || q.includes("book") || q.includes("appointment") || q.includes("meeting")) return "Sure! Ungaluku demo book panna contact page ku ponga — lab-y-ai.vercel.app/contact. Atho illa namma sales team ku ping pannala?";
   if (q.includes("service") || q.includes("product") || q.includes("offer") || q.includes("enna")) return "We have 6 AI services: Text Agent (chatbots), Voice Agent (calls), Testing Agent (QA), Analytics Agent (insights), Media Agent (content), AI Integrated Website Developing (custom sites). Ethula ungaluku interest?";
@@ -46,13 +46,13 @@ export async function POST(req: NextRequest) {
     if (!apiKey) {
       return NextResponse.json({
         status: "ok",
-        response: `Vanakkam! Naan Yara. Lab Y AI Solutions la AI agent. Ungaluku eppadi help pannanum?\n\nWe offer 6 AI Services:\n🔹 Text Agent — Chatbots for websites & social media\n🔹 Voice Agent — Real phone calls in Tanglish\n🔹 Testing Agent — Automated QA\n🔹 Analytics Agent — Call insights & sentiment\n🔹 Media Agent — AI content generation\n🔹 AI Integrated Website Developing — Custom websites with AI features\n\n14-day free trial! Enna help venum?`
+        response: `Vanakkam! Naan Yara. ZiX AI Solutions la AI agent. Ungaluku eppadi help pannanum?\n\nWe offer 6 AI Services:\n🔹 Text Agent — Chatbots for websites & social media\n🔹 Voice Agent — Real phone calls in Tanglish\n🔹 Testing Agent — Automated QA\n🔹 Analytics Agent — Call insights & sentiment\n🔹 Media Agent — AI content generation\n🔹 AI Integrated Website Developing — Custom websites with AI features\n\n14-day free trial! Enna help venum?`
       });
     }
 
     const contents = [
       { role: "user", parts: [{ text: SYSTEM_PROMPT }] },
-      { role: "model", parts: [{ text: "Understood. I am Yara, the Tanglish-speaking voice agent for Lab Y AI Solutions. I will follow all rules strictly." }] },
+      { role: "model", parts: [{ text: "Understood. I am Yara, the Tanglish-speaking voice agent for ZiX AI Solutions. I will follow all rules strictly." }] },
       { role: "user", parts: [{ text: message }] },
     ];
 

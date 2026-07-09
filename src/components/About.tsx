@@ -2,9 +2,9 @@ export default function About() {
   return (
     <section id="about" className="py-24 px-4">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6">About Lab-Y</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6">About ZiX</h2>
         <p className="text-grey-400 text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
-          Lab-Y AI Solutions is a B2B technology company specializing in
+          ZiX AI Solutions is a B2B technology company specializing in
           artificial intelligence products. We combine deep expertise in SaaS
           architecture, conversational AI, and enterprise CRM systems to build
           tools that actually move the needle.

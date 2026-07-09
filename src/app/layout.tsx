@@ -27,11 +27,11 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Lab Y AI Solutions | AI Agents & Custom Web Development",
+  title: "ZiX AI Solutions | AI Agents & Custom Web Development",
   description:
-    "Lab Y delivers 6 specialized AI services — Text, Voice, Testing, Analytics, Media agents, and AI-integrated Website Development — to transform your business with Tanglish-powered automation.",
+    "ZiX AI Solutions delivers 6 specialized AI services — Text, Voice, Testing, Analytics, Media agents, and AI-integrated Website Development — to transform your business with Tanglish-powered automation.",
   openGraph: {
-    title: "Lab Y AI Solutions",
+    title: "ZiX AI Solutions",
     description: "AI agents & custom website development with Tanglish support.",
   },
 };

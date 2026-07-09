@@ -57,7 +57,7 @@ export default function MediaAgentPage() {
           </div>
 
           <div className="flex gap-2 mb-6">
-            <input value={prompt} onChange={(e) => setPrompt(e.target.value)} onKeyDown={(e) => e.key === "Enter" && generate()} placeholder={format === "social" ? "e.g., AI Voice Agent for sales..." : format === "banner" ? "e.g., Enterprise SaaS banner..." : "e.g., Lab Y modern logo..."} className="flex-1 px-4 py-3 rounded-xl border border-white/5 bg-black/40 text-white text-sm placeholder:text-grey-600 focus:outline-none focus:border-accent-600/30" />
+            <input value={prompt} onChange={(e) => setPrompt(e.target.value)} onKeyDown={(e) => e.key === "Enter" && generate()} placeholder={format === "social" ? "e.g., AI Voice Agent for sales..." : format === "banner" ? "e.g., Enterprise SaaS banner..." : "e.g., ZiX modern logo..."} className="flex-1 px-4 py-3 rounded-xl border border-white/5 bg-black/40 text-white text-sm placeholder:text-grey-600 focus:outline-none focus:border-accent-600/30" />
             <button onClick={generate} disabled={!prompt.trim() || generating} className="px-5 py-3 rounded-xl bg-accent-600 text-white disabled:opacity-40 hover:bg-accent-500 transition-all text-sm">
               {generating ? "..." : "Generate"}
             </button>

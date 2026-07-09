@@ -14,7 +14,7 @@ export default function Hero() {
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] mb-6">
           Build Smarter with{" "}
           <span className="bg-gradient-to-r from-accent-400 via-accent-500 to-accent-600 bg-clip-text text-transparent">
-            Lab-Y AI
+            ZiX AI
           </span>
         </h1>
         <p className="text-lg sm:text-xl text-grey-400 max-w-2xl mx-auto mb-10 leading-relaxed">
