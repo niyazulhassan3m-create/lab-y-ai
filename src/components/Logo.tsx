@@ -109,10 +109,10 @@ export default function Logo({ className = "h-16 w-auto" }: { className?: string
         </g>
 
         {/* Tagline */}
-        <text x="0" y="102" font-family="'Space Grotesk','Inter','Arial',sans-serif" font-size="13" fill="#777" letter-spacing="8" font-weight="500">AI SOLUTIONS</text>
+        <text x="0" y="102" font-family="'Space Grotesk','Inter','Arial',sans-serif" font-size="13" fill="#777" letter-spacing="5.5" font-weight="500">Innovating Intelligence</text>
 
         {/* Decorative line under tagline */}
-        <line x1="0" y1="114" x2="185" y2="114" stroke="url(#zxGrad)" stroke-width="1.5" opacity="0.2"/>
+        <line x1="0" y1="114" x2="218" y2="114" stroke="url(#zxGrad)" stroke-width="1.5" opacity="0.2"/>
       </svg>
     </Link>
   );
