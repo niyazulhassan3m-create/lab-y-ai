@@ -20,12 +20,11 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/60 backdrop-blur-xl">
+      <Link href="/" className="absolute top-0 left-0 z-50">
+        <div style={{ height: 5 }}><Logo className="w-auto" /></div>
+      </Link>
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 h-16">
-        <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center">
-            <div style={{ height: 7 }}><Logo className="w-auto" /></div>
-          </Link>
-          <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-1 ml-8">
             {links.map((l) => {
               const isActive = pathname === l.href;
               return (
@@ -43,7 +42,6 @@ export default function Header() {
               );
             })}
           </div>
-        </div>
 
         <div className="flex items-center gap-3">
           <Link
