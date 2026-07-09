@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
           <Link href="/" className="flex items-center">
-            <Logo className="h-10 w-auto" />
+            <Logo className="h-8 w-auto" />
           </Link>
           <div className="flex items-center gap-6">
             {footerLinks.map((l) => (
